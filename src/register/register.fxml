@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.weathericons.WeatherIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="RegisterPane" maxHeight="800.0" maxWidth="1280.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="register.RegisterController">
+   <children>
+      <Label layoutX="515.0" layoutY="199.0" prefHeight="38.0" prefWidth="250.0" text="Register new account" textAlignment="CENTER" textFill="#00a1ff">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <JFXPasswordField id="PasswordField" fx:id="NewAccPassword" layoutX="597.0" layoutY="572.0" prefHeight="25.0" prefWidth="208.0" />
+      <JFXPasswordField id="ConfirmPasswordField" fx:id="NewAccConfirmPassword" layoutX="597.0" layoutY="626.0" prefHeight="25.0" prefWidth="208.0" />
+      <JFXTextField id="UsernameTextField" fx:id="NewAccUserName" layoutX="597.0" layoutY="348.0" prefHeight="25.0" prefWidth="208.0" />
+      <JFXTextField id="EmailTextField" fx:id="NewAccEmail" layoutX="597.0" layoutY="400.0" prefHeight="25.0" prefWidth="208.0" />
+      <JFXTextField id="PhoneNumberField" fx:id="NewAccPhoneNumber" layoutX="597.0" layoutY="517.0" prefHeight="25.0" prefWidth="208.0" />
+      <Label layoutX="466.0" layoutY="353.0" prefHeight="19.0" prefWidth="62.0" text="Username">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="466.0" layoutY="403.0" text="Email">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <JFXDatePicker id="DOBField" fx:id="NewAccDOB" layoutX="597.0" layoutY="456.0" prefHeight="25.0" prefWidth="208.0" />
+      <Label layoutX="466.0" layoutY="459.0" prefHeight="19.0" prefWidth="79.0" text="Date of Birth">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="466.0" layoutY="520.0" prefHeight="19.0" prefWidth="88.0" text="Phone number">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="466.0" layoutY="577.0" prefHeight="19.0" prefWidth="62.0" text="Password">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label layoutX="463.0" layoutY="630.0" text="Confirm password">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <JFXButton id="NextButton" fx:id="NextButton" layoutX="606.0" layoutY="690.0" onAction="#loadConfirm" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #66bbe2;" text="Next">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="527.0" layoutY="349.0" text="*" textFill="RED">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="502.0" layoutY="400.0" text="*" textFill="RED">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="527.0" layoutY="573.0" text="*" textFill="RED">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="573.0" layoutY="626.0" prefHeight="26.0" prefWidth="1.0" text="*" textFill="RED">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <WeatherIconView glyphName="UMBRELLA" layoutX="59.0" layoutY="71.0" rotate="-93.4" size="20.0" />
+      <JFXButton fx:id="BackButton" layoutX="55.0" layoutY="45.0" onAction="#loadBackward" prefHeight="37.0" prefWidth="79.0" text="    Back">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
