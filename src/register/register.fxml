@@ -56,7 +56,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <JFXButton id="NextButton" fx:id="NextButton" layoutX="606.0" layoutY="690.0" onAction="#loadConfirm" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #66bbe2;" text="Next">
+      <JFXButton id="NextButton" fx:id="NextButton" layoutX="606.0" layoutY="711.0" onAction="#clickNextButton" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #66bbe2;" text="Next">
          <font>
             <Font size="14.0" />
          </font>
@@ -87,5 +87,10 @@
             <Font size="16.0" />
          </font>
       </JFXButton>
+      <Label fx:id="NoticeRegisterError" layoutX="516.0" layoutY="673.0" prefHeight="17.0" prefWidth="296.0" textFill="RED">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

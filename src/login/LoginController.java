@@ -22,6 +22,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.event.ActionEvent;
 
 public class LoginController implements Initializable {
 
@@ -68,15 +69,16 @@ public class LoginController implements Initializable {
         }
     }
 
+    @FXML
     public void loadConfirmEmail(ActionEvent event) {
         System.out.println("Forget password hyperlink triggered!");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../confirm/confirm.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../confirmEmail/confirmEmail.fxml"));
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
             newStage.initStyle(StageStyle.UTILITY);
-            newStage.setTitle("Chat Application");
+            newStage.setTitle("Chat Application.");
             newStage.setScene(scene);
             newStage.show();
 
@@ -86,6 +88,7 @@ public class LoginController implements Initializable {
         }
     }
 
+    @FXML
     public void signUp(ActionEvent event) {
         System.out.println("Sign up hyperlink triggered!");
 
@@ -109,6 +112,7 @@ public class LoginController implements Initializable {
         ((Stage) LoginPane.getScene().getWindow()).close();
     }
 
+    @FXML
     private void loadChatbox() {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("../chatbox/chatbox.fxml"));
@@ -138,6 +142,7 @@ public class LoginController implements Initializable {
         return true;
     }
 
+    @FXML
     private void triggerEnter(javafx.scene.input.KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER)  {
             login(new ActionEvent());

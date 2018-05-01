@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="800.0" maxWidth="1280.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="ConfirmCodePane" maxHeight="800.0" maxWidth="1280.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="confirm.ConfirmController">
    <children>
       <Label layoutX="542.0" layoutY="208.0" prefHeight="32.0" prefWidth="140.0" text="Confirm Code" textFill="#00a1ff">
          <font>
@@ -20,10 +19,15 @@
          </font>
       </Label>
       <JFXTextField fx:id="ConfirmCodeField" layoutX="545.0" layoutY="323.0" />
-      <JFXButton fx:id="ConfirmCodeButton" layoutX="577.0" layoutY="385.0" style="-fx-background-color: #66bbe2;" text="Confirm">
+      <JFXButton fx:id="ConfirmCodeButton" layoutX="577.0" layoutY="394.0" onAction="#clickConfirmCodeButton" style="-fx-background-color: #66bbe2;" text="Confirm">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
+      <Label fx:id="NoticeCodeError" layoutX="509.0" layoutY="365.0" prefHeight="17.0" prefWidth="238.0" textFill="RED">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

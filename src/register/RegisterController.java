@@ -10,11 +10,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.event.ActionEvent;
 
-import java.awt.event.ActionEvent;
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,18 +40,48 @@ public class RegisterController implements Initializable {
     private JFXPasswordField NewAccConfirmPassword;
     @FXML
     private AnchorPane RegisterPane;
+    @FXML
+    private Label NoticeRegisterError;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         NextButton.setCursor(Cursor.HAND);
         BackButton.setCursor(Cursor.HAND);
+        NoticeRegisterError.setText("");
     }
 
-    public boolean allNecessaryFieldsFilled() {
+    private boolean allNecessaryFieldsFilled() {
+        return (fieldFilled(NewAccUserName) && fieldFilled(NewAccEmail) && passwordFieldFilled(NewAccPassword) && passwordFieldFilled(NewAccConfirmPassword));
+    }
+
+    private boolean fieldFilled(JFXTextField textField) {
+        return (textField.getText() != null && !textField.getText().trim().isEmpty());
+    }
+
+    private boolean passwordFieldFilled(JFXPasswordField textField) {
+        return (textField.getText() != null && !textField.getText().trim().isEmpty());
+    }
+
+    private boolean isValidEmail(String email) {
+        // CODE
         return true;
     }
 
-    public void loadConfirm(ActionEvent event) {
+    @FXML
+    private void clickNextButton(ActionEvent event) {
+        NoticeRegisterError.setText("");
+        if (!allNecessaryFieldsFilled()) {
+            NoticeRegisterError.setText("You need to enter all necessary fields");
+        }
+        else if (!isValidEmail(NewAccEmail.getText())) {
+            NoticeRegisterError.setText("You need to enter valid email address");
+        }
+        else  loadConfirm();
+    }
+
+
+    private void loadConfirm() {
+        System.out.println("Next Button pressed");
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../confirm/confirm.fxml"));
             Scene scene = new Scene(root);
@@ -66,7 +98,9 @@ public class RegisterController implements Initializable {
         }
     }
 
+    @FXML
     public void loadBackward(ActionEvent event) {
+        System.out.println("Back Button pressed");
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
             Scene scene = new Scene(root);
@@ -87,6 +121,5 @@ public class RegisterController implements Initializable {
     private Stage getStage() {
         return (Stage) RegisterPane.getScene().getWindow();
     }
-
 
 }
