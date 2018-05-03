@@ -5,18 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="695ca6a4-6c61-4862-81ee-bfe2090ec927" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/confirmEmail/ConfirmEmailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/confirmEmail/confirmEmail.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/editProfile/editProfile.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChatGUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ChatGUI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/chatbox/ChatController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/chatbox/chatbox.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/chatbox/chatbox.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/confirm/ConfirmController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/confirm/ConfirmController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/confirmEmail/confirmEmail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/confirmEmail/confirmEmail.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/login/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/login/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/login/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/login/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/profile/ProfileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/profile/profile.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/register/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/register/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/confirm/ConfirmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/confirm/ConfirmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/confirm/confirm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/confirm/confirm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chatbox/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatbox/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chatbox/chatbox.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatbox/chatbox.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/profile/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/editProfile/EditProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/profile/profile.fxml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,41 +35,77 @@
       <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/login/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="72" column="53" lean-forward="true" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
+            <state relative-caret-position="816">
+              <caret line="125" column="9" lean-forward="true" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
+              <folding>
+                <element signature="e#1566#1567#0" expanded="true" />
+                <element signature="e#1629#1630#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/register/register.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+      <file leaf-file-name="ChatController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chatbox/ChatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
-              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+            <state relative-caret-position="414">
+              <caret line="80" column="5" lean-forward="true" selection-start-line="78" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="confirmEmail.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/confirmEmail/confirmEmail.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+      <file leaf-file-name="editProfile.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/editProfile/editProfile.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+            <state relative-caret-position="153">
+              <caret line="9" column="173" selection-start-line="9" selection-start-column="173" selection-end-line="9" selection-end-column="173" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="EditProfileController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/editProfile/EditProfileController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chatbox.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chatbox/chatbox.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="confirm.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/confirm/confirm.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file leaf-file-name="ConfirmEmailController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/confirmEmail/ConfirmEmailController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+            <state relative-caret-position="850">
+              <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="85" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2691#2692#0" expanded="true" />
-                <element signature="e#2761#2762#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,12 +114,10 @@
       <file leaf-file-name="ConfirmController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/confirm/ConfirmController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
-              <caret line="40" column="55" lean-forward="true" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
+            <state relative-caret-position="193">
+              <caret line="40" column="55" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#960#961#0" expanded="true" />
-                <element signature="e#1030#1031#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,8 +126,8 @@
       <file leaf-file-name="RegisterController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/register/RegisterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+            <state relative-caret-position="289">
+              <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,16 +147,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="confirm.fxml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/confirm/confirm.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="139" selection-start-line="21" selection-start-column="139" selection-end-line="21" selection-end-column="146" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -134,9 +162,11 @@
     <findStrings>
       <find>alerta</find>
       <find>ggggggggggggdg7-06666=================================================================6+b-**</find>
+      <find>imagepath</find>
     </findStrings>
     <replaceStrings>
       <replace>alert</replace>
+      <replace>imagePath</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -149,13 +179,19 @@
         <option value="$PROJECT_DIR$/src/application/Main.java" />
         <option value="$PROJECT_DIR$/src/confirm-email/confirm-email.fxml" />
         <option value="$PROJECT_DIR$/src/confirmEmail/confirm-email.fxml" />
-        <option value="$PROJECT_DIR$/src/login/LoginController.java" />
         <option value="$PROJECT_DIR$/src/confirmEmail/ConfirmEmailController.java" />
         <option value="$PROJECT_DIR$/src/confirm/confirm.fxml" />
         <option value="$PROJECT_DIR$/src/register/register.fxml" />
         <option value="$PROJECT_DIR$/src/register/RegisterController.java" />
         <option value="$PROJECT_DIR$/src/confirm/ConfirmController.java" />
         <option value="$PROJECT_DIR$/src/confirmEmail/confirmEmail.fxml" />
+        <option value="$PROJECT_DIR$/src/login/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/profile/profile.fxml" />
+        <option value="$PROJECT_DIR$/src/profile/EditProfileController.java" />
+        <option value="$PROJECT_DIR$/src/profile/editProfile.fxml" />
+        <option value="$PROJECT_DIR$/src/chatbox/ChatController.java" />
+        <option value="$PROJECT_DIR$/src/chatbox/chatbox.fxml" />
+        <option value="$PROJECT_DIR$/src/editProfile/EditProfileController.java" />
       </list>
     </option>
   </component>
@@ -168,11 +204,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="54" />
-    <option name="y" value="16" />
-    <option name="width" value="1120" />
-    <option name="height" value="620" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="66" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="775" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -180,8 +216,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,13 +259,13 @@
               <item name="ChatGUI" type="b2602c69:ProjectViewProjectNode" />
               <item name="ChatGUI" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="editProfile" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ChatGUI" type="b2602c69:ProjectViewProjectNode" />
               <item name="ChatGUI" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ChatGUI" type="b2602c69:ProjectViewProjectNode" />
@@ -244,13 +281,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/javax.mail.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Server/SEProject/SEProject" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -352,15 +388,17 @@
       <workItem from="1525064346998" duration="2477000" />
       <workItem from="1525126503566" duration="604000" />
       <workItem from="1525128994154" duration="1319000" />
-      <workItem from="1525138244180" duration="10980000" />
+      <workItem from="1525138244180" duration="11955000" />
+      <workItem from="1525245777795" duration="4878000" />
+      <workItem from="1525297090185" duration="6001000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45774000" />
+    <option name="totallyTimeSpent" value="57628000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -369,16 +407,17 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50065106" side_tool="true" weight="0.23862068" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23910733" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49934897" weight="0.23804463" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.4229543" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19947916" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2484375" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -390,7 +429,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,6 +438,118 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/login/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+          <folding>
+            <element signature="e#1566#1567#0" expanded="true" />
+            <element signature="e#1629#1630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chatbox/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="59" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/confirmEmail/ConfirmEmailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="85" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/confirm/ConfirmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="55" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/register/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="16" column="81" selection-start-line="16" selection-start-column="81" selection-end-line="16" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/login/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="72" column="53" lean-forward="true" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
+          <folding>
+            <element signature="e#1566#1567#0" expanded="true" />
+            <element signature="e#1629#1630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/confirmEmail/ConfirmEmailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/confirm/ConfirmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="55" lean-forward="true" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/register/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="81" selection-start-line="16" selection-start-column="81" selection-end-line="16" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/login/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
@@ -613,68 +763,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/login/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="72" column="53" lean-forward="true" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/register/RegisterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+        <state relative-caret-position="289">
+          <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/register/register.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/confirmEmail/ConfirmEmailController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+        <state relative-caret-position="850">
+          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="85" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2691#2692#0" expanded="true" />
-            <element signature="e#2761#2762#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/confirmEmail/confirmEmail.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/src/login/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+        <state relative-caret-position="816">
+          <caret line="125" column="9" lean-forward="true" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
+          <folding>
+            <element signature="e#1566#1567#0" expanded="true" />
+            <element signature="e#1629#1630#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/confirm/ConfirmController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="40" column="55" lean-forward="true" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
+        <state relative-caret-position="193">
+          <caret line="40" column="55" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
-            <element signature="e#1030#1031#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/confirm/confirm.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="139" selection-start-line="21" selection-start-column="139" selection-end-line="21" selection-end-column="146" />
+        <state relative-caret-position="289">
+          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chatbox/chatbox.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/editProfile/editProfile.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="173" selection-start-line="9" selection-start-column="173" selection-end-line="9" selection-end-column="173" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chatbox/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="80" column="5" lean-forward="true" selection-start-line="78" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/editProfile/EditProfileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

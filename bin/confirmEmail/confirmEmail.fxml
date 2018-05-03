@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ConfirmEMailPane" maxHeight="800.0" maxWidth="1280.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="confirmEmail.ConfirmEmailController">
+<AnchorPane fx:id="ConfirmEmailPane" maxHeight="800.0" maxWidth="1280.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="confirmEmail.ConfirmEmailController">
    <children>
       <Label layoutX="533.0" layoutY="189.0" text="Confirm your email" textFill="#009ff5">
          <font>

@@ -64,7 +64,6 @@ public class LoginController implements Initializable {
 
         //condition
         if (allFieldsFilled()){
-            closeStage();
             loadChatbox();
         }
     }
@@ -108,19 +107,19 @@ public class LoginController implements Initializable {
         }
     }
 
-    private void closeStage() {
-        ((Stage) LoginPane.getScene().getWindow()).close();
-    }
 
-    @FXML
     private void loadChatbox() {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("../chatbox/chatbox.fxml"));
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UTILITY);
-            stage.setTitle("Chat Application");
-            stage.setScene(new Scene(parent));
-            stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("../chatbox/chatbox.fxml"));
+            Scene scene = new Scene(root);
+
+            Stage newStage = new Stage();
+            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setTitle("Chat Application");
+            newStage.setScene(scene);
+            newStage.show();
+
+            this.getStage().close();
 
         } catch (IOException ex) {
             // Add log
