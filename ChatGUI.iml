@@ -44,5 +44,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jfoenix-8.0.4" level="project" />
+    <orderEntry type="library" name="fontawesomefx-8.9" level="project" />
+    <orderEntry type="library" name="javax.mail" level="project" />
   </component>
 </module>
