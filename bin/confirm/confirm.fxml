@@ -18,7 +18,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="ConfirmCodeField" layoutX="545.0" layoutY="323.0" />
+      <JFXTextField fx:id="ConfirmCodeField" layoutX="528.0" layoutY="323.0" promptText="enter confirm code" />
       <JFXButton fx:id="ConfirmCodeButton" layoutX="577.0" layoutY="394.0" onAction="#clickConfirmCodeButton" style="-fx-background-color: #66bbe2;" text="Confirm">
          <font>
             <Font size="14.0" />

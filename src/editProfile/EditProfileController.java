@@ -69,9 +69,9 @@ public class EditProfileController implements Initializable{
 	}
 
 	private void loadBackward() {
-		System.out.println("To My Profile Button pressed");
+		System.out.println("Back Button pressed");
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../chatbox/chatbox.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../myProfile/myProfile.fxml"));
 			Scene scene = new Scene(root);
 
 			Stage newStage = new Stage();
@@ -96,12 +96,11 @@ public class EditProfileController implements Initializable{
 		File file = chooser.showOpenDialog(new Stage());
 		if(file != null) {
 			String imagePath = file.toURI().toString();
-			System.out.println("file:"+imagePath);
+			System.out.println(imagePath);
 			Image image = new Image(imagePath);
 			MyEditProfileImage.setImage(image);
-		}
-		else
-		{
+        }
+		else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("Information Dialog");
 			alert.setHeaderText("You haven't choose any image");

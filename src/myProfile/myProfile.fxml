@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ProfileInfoPane" maxHeight="800.0" maxWidth="1280.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myProfile.MyProfileController">
+    <children>
+        <ImageView fx:id="MyImage" fitHeight="300.0" fitWidth="300.0" layoutX="490.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" />
+        <AnchorPane layoutX="413.0" layoutY="447.0" prefHeight="259.0" prefWidth="458.0">
+            <children>
+                <Label layoutX="37.0" layoutY="27.0" text="Username">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="37.0" layoutY="172.0" text="Date of birth">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="37.0" layoutY="78.0" text="Email">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="37.0" layoutY="124.0" text="Phone number">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <JFXButton fx:id="ToEditProfileButton" layoutX="191.0" layoutY="232.0" onAction="#toEditProfile" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #66bbe2;" text="Edit profile" />
+            <Label fx:id="UsernameLabel" layoutX="229.0" layoutY="27.0" prefHeight="20.0" prefWidth="215.0" />
+            <Label fx:id="EmailLabel" layoutX="229.0" layoutY="78.0" prefHeight="20.0" prefWidth="215.0" />
+            <Label fx:id="PhoneNumberLabel" layoutX="229.0" layoutY="124.0" prefHeight="20.0" prefWidth="215.0" />
+            <Label fx:id="DOBLabel" layoutX="229.0" layoutY="172.0" prefHeight="20.0" prefWidth="215.0" />
+            </children>
+        </AnchorPane>
+        <JFXButton fx:id="BackButton" layoutX="50.0" layoutY="50.0" onAction="#clickBackButton" prefHeight="29.0" prefWidth="50.0" text="Back">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </JFXButton>
+    </children>
+</AnchorPane>

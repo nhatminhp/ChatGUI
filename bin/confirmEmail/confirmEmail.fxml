@@ -18,8 +18,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="ConfirmEmailTextField" layoutX="551.0" layoutY="299.0" />
-      <JFXButton fx:id="NextConfirmEmailButton" layoutX="598.0" layoutY="375.0" onAction="#clickNextButton" style="-fx-background-color: #66bbe2;" text="Next" />
+      <JFXTextField fx:id="ConfirmEmailTextField" layoutX="534.0" layoutY="300.0" promptText="enter your email" />
+      <JFXButton fx:id="NextConfirmEmailButton" layoutX="592.0" layoutY="375.0" onAction="#clickNextButton" style="-fx-background-color: #66bbe2;" text="Next" />
       <Label fx:id="NoticeError" layoutX="502.0" layoutY="341.0" prefHeight="20.0" prefWidth="275.0" textAlignment="CENTER" textFill="RED">
          <font>
             <Font size="14.0" />

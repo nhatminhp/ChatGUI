@@ -46,6 +46,7 @@ public class ChatController implements Initializable {
         TypeChatTextField.setOnKeyPressed(event -> this.triggerEnter(event));
         ToMyProfileButton.setCursor(Cursor.HAND);
         SendButton.setCursor(Cursor.HAND);
+        MessagesTextArea.setEditable(false);
     }
 
     @FXML
@@ -56,7 +57,7 @@ public class ChatController implements Initializable {
     private void loadConfirmCode() {
         System.out.println("To My Profile Button pressed");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../editProfile/editProfile.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../myProfile/myProfile.fxml"));
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();

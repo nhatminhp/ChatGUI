@@ -1,9 +1,11 @@
 package login;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Connect;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
@@ -18,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -27,6 +30,8 @@ import javafx.event.ActionEvent;
 public class LoginController implements Initializable {
 
     private String username, password;
+
+    private Connect newConnect;
 
     @FXML
     private JFXButton LoginButton;
@@ -67,6 +72,15 @@ public class LoginController implements Initializable {
             loadChatbox();
         }
     }
+
+    public void callAPI () throws IOException {
+        newConnect.addArgument("user", LoginUsernameTextField.getText());
+        newConnect.addArgument("pwd", LoginPasswordField.getText());
+        newConnect.setURL("http://localhost:8080/LoginServlet");
+    }
+
+
+
 
     @FXML
     public void loadConfirmEmail(ActionEvent event) {
