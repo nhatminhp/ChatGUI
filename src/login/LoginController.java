@@ -97,8 +97,10 @@ public class LoginController implements Initializable {
             newJson.listJson(parse);
             ///////////////////////////////////////////////////
             if (parse.get("success").equals("false}")) {
-                ///////////////////////////////////////////////////////
                 onInvalidLogin();
+                return;
+            }if (parse.get("success").equals("true") && parse.get("confirm").equals("false")) {
+                onNotConfirmed();
                 return;
             }
             loadChatbox();
@@ -107,10 +109,10 @@ public class LoginController implements Initializable {
 
 
     private String callAPI () throws IOException {
-        //newConnect.addArgument("user", LoginUsernameTextField.getText());
-        //newConnect.addArgument("pwd", LoginPasswordField.getText());
-        newConnect.addArgument("email","linh@gmail.com");
-        newConnect.addArgument("password","123");
+        newConnect.addArgument("email", LoginUsernameTextField.getText());
+        newConnect.addArgument("password", LoginPasswordField.getText());
+//        newConnect.addArgument("email","phanhuyhung1707@gmail.com");
+//        newConnect.addArgument("password","123");
         newConnect.setURL("http://localhost:8080/login");
         return newConnect.connect();
     }
@@ -177,9 +179,11 @@ public class LoginController implements Initializable {
     }
 
     private void onInvalidLogin() {
-        LoginUsernameTextField.setText(username);
-        LoginPasswordField.setText("");
         NoticeLabel.setText("Incorrect Username or Password !");
+    }
+
+    private void onNotConfirmed() {
+        NoticeLabel.setText("You haven't confirmed email, click forgot password to confirm your email");
     }
 
     private boolean allFieldsFilled() {

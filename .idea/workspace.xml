@@ -6,18 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="695ca6a4-6c61-4862-81ee-bfe2090ec927" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChatGUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ChatGUI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/chatbox/Listener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/confirm/ConfirmController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/confirm/ConfirmController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/confirm/confirm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/confirm/confirm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/confirmEmail/ConfirmEmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/confirmEmail/ConfirmEmailController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/confirmEmail/confirmEmail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/confirmEmail/confirmEmail.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/login/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/login/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chatbox/Listener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/confirm/ConfirmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/confirm/ConfirmController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/confirm/confirm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/confirm/confirm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/confirmEmail/ConfirmEmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/confirmEmail/ConfirmEmailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/confirmEmail/confirmEmail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/confirmEmail/confirmEmail.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/login/LoginController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -33,10 +21,12 @@
       <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/login/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="51" column="33" lean-forward="true" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+            <state relative-caret-position="1113">
+              <caret line="185" column="104" lean-forward="true" selection-start-line="185" selection-start-column="104" selection-end-line="185" selection-end-column="104" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5317#5318#0" expanded="true" />
+                <element signature="e#5388#5389#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -205,7 +195,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="65" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -419,19 +409,20 @@
       <workItem from="1526263913340" duration="5071000" />
       <workItem from="1526354511999" duration="644000" />
       <workItem from="1526357571270" duration="1389000" />
-      <workItem from="1526380030751" duration="1895000" />
+      <workItem from="1526380030751" duration="4058000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90834000" />
+    <option name="totallyTimeSpent" value="92997000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32943678" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -439,7 +430,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49934897" weight="0.18206896" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49934897" visible="true" weight="0.18172157" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.4229543" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -457,7 +448,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32943678" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,6 +463,8 @@
           <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5317#5318#0" expanded="true" />
+            <element signature="e#5388#5389#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -524,6 +516,8 @@
           <caret line="72" column="53" lean-forward="true" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5317#5318#0" expanded="true" />
+            <element signature="e#5388#5389#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -828,13 +822,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/jre/lib/ext/nashorn.jar!/jdk/nashorn/internal/parser/JSONParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="40" column="40" lean-forward="true" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/java-json.jar!/org/json/JSONObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2041">
@@ -846,12 +833,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/jre/lib/ext/nashorn.jar!/jdk/nashorn/internal/parser/JSONParser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="44" column="37" lean-forward="true" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/login/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="51" column="33" lean-forward="true" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+        <state relative-caret-position="1113">
+          <caret line="185" column="104" lean-forward="true" selection-start-line="185" selection-start-column="104" selection-end-line="185" selection-end-column="104" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5317#5318#0" expanded="true" />
+            <element signature="e#5388#5389#0" expanded="true" />
           </folding>
         </state>
       </provider>
