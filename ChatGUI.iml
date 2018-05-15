@@ -47,5 +47,6 @@
     <orderEntry type="library" name="jfoenix-8.0.4" level="project" />
     <orderEntry type="library" name="fontawesomefx-8.9" level="project" />
     <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="library" name="java-json" level="project" />
   </component>
 </module>

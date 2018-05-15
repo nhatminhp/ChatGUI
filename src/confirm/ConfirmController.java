@@ -23,6 +23,8 @@ public class ConfirmController implements Initializable {
     @FXML
     private JFXButton ConfirmCodeButton;
     @FXML
+    private JFXButton BackButton;
+    @FXML
     private JFXTextField ConfirmCodeField;
     @FXML
     private Label NoticeCodeError;
@@ -33,6 +35,7 @@ public class ConfirmController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ConfirmCodeField.setOnKeyPressed(event -> this.triggerEnter(event));
         ConfirmCodeButton.setCursor(Cursor.HAND);
+        BackButton.setCursor(Cursor.HAND);
         NoticeCodeError.setText("");
     }
 
@@ -73,6 +76,25 @@ public class ConfirmController implements Initializable {
             this.getStage().close();
         } catch (Exception e) {
             System.out.println("Cannot switch to Login scene.");
+        }
+    }
+
+    @FXML
+    private void clickBackButton(ActionEvent event) {
+        System.out.println("Back Button pressed");
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../confirmEmail/confirmEmail.fxml"));
+            Scene scene = new Scene(root);
+
+            Stage newStage = new Stage();
+            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setTitle("Chat Application");
+            newStage.setScene(scene);
+            newStage.show();
+
+            this.getStage().close();
+        } catch (Exception e) {
+            System.out.println("Cannot switch to scene.");
         }
     }
 

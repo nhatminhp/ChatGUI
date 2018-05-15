@@ -3,9 +3,11 @@ package login;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import application.Connect;
+import application.Json;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
@@ -32,6 +34,7 @@ public class LoginController implements Initializable {
     private String username, password;
 
     private Connect newConnect;
+    private Json newJson;
 
     @FXML
     private JFXButton LoginButton;
@@ -53,8 +56,26 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        LoginUsernameTextField.setOnKeyPressed(event -> this.triggerEnter(event));
-        LoginPasswordField.setOnKeyPressed(event -> this.triggerEnter(event));
+        newJson = new Json();
+        try {
+            newConnect = new Connect();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        LoginUsernameTextField.setOnKeyPressed(event -> {
+            try {
+                this.triggerEnter(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        LoginPasswordField.setOnKeyPressed(event -> {
+            try {
+                this.triggerEnter(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         LoginButton.setCursor(Cursor.HAND);
         ForgetPassword.setCursor(Cursor.HAND);
     }
@@ -64,19 +85,34 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void login(ActionEvent event) {
+    private void login(ActionEvent event) throws IOException {
         System.out.println("Login Button Clicked!");
 
         //condition
         if (allFieldsFilled()){
+
+            String returnedJson = callAPI();
+            newJson.setjson(returnedJson);
+            Map<String,String> parse = newJson.getjson();
+            newJson.listJson(parse);
+            ///////////////////////////////////////////////////
+            if (parse.get("success").equals("false}")) {
+                ///////////////////////////////////////////////////////
+                onInvalidLogin();
+                return;
+            }
             loadChatbox();
         }
     }
 
-    public void callAPI () throws IOException {
-        newConnect.addArgument("user", LoginUsernameTextField.getText());
-        newConnect.addArgument("pwd", LoginPasswordField.getText());
-        newConnect.setURL("http://localhost:8080/LoginServlet");
+
+    private String callAPI () throws IOException {
+        //newConnect.addArgument("user", LoginUsernameTextField.getText());
+        //newConnect.addArgument("pwd", LoginPasswordField.getText());
+        newConnect.addArgument("email","linh@gmail.com");
+        newConnect.addArgument("password","123");
+        newConnect.setURL("http://localhost:8080/login");
+        return newConnect.connect();
     }
 
 
@@ -156,7 +192,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void triggerEnter(javafx.scene.input.KeyEvent event) {
+    private void triggerEnter(javafx.scene.input.KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER)  {
             login(new ActionEvent());
         }
