@@ -26,6 +26,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class ConfirmEmailController implements Initializable {
@@ -44,15 +46,12 @@ public class ConfirmEmailController implements Initializable {
     private Connect newConnect;
     private Json newJson;
 
-    private static boolean isValidEmail(String email) {
-        boolean result = true;
-        try {
-            InternetAddress emailAddress = new InternetAddress(email);
-            emailAddress.validate();
-        } catch (AddressException ex) {
-            result = false;
-        }
-        return result;
+
+
+    public static boolean isValidEmail(String email) {
+        Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile( "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        return matcher.find();
     }
 
     @Override
@@ -81,18 +80,18 @@ public class ConfirmEmailController implements Initializable {
         if (!fieldFilled(ConfirmEmailTextField)) {
             NoticeError.setText("You need to enter your email first !");
         }
-//        else if (!isValidEmail(NoticeError.getText())) {
-//            NoticeError.setText("You need to enter valid email address");
-//        }
+        else if (!isValidEmail(getEmail())) {
+            NoticeError.setText("You need to enter valid email address");
+        }
         else {
             String returnedJson = callAPI();
             newJson.setjson(returnedJson);
             Map<String, String> parse = newJson.getjson();
             newJson.listJson(parse);
-//            if (parse.get("success").equals("false")) {
-//                onFailed();
-//                return;
-//            }
+            if (parse.get("success").equals("false")) {
+                onFailed();
+                return;
+            }
             loadConfirmCode();
         }
     }
