@@ -61,36 +61,4 @@ public class Connect {
         in.close();
         return output;
     }
-
-//    public static void main(String[] args) throws Exception {
-
-
-//        Map<String,String> arguments = new HashMap<>();
-//        arguments.put("user", "hungphan");
-//        arguments.put("pwd", "hungphan"); // This is a fake password obviously
-//        StringJoiner sj = new StringJoiner("&");
-//        for(Map.Entry<String,String> entry : arguments.entrySet())
-//            sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "="
-//                    + URLEncoder.encode(entry.getValue(), "UTF-8"));
-//        byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
-//        int length = out.length;
-//        URL yahoo = new URL("http://localhost:8080/LoginServlet");
-//        HttpURLConnection conn = (HttpURLConnection) yahoo.openConnection();
-//        conn.setDoOutput(true);
-//        conn.setFixedLengthStreamingMode(length);
-//        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-//        conn.connect();
-//        try(OutputStream os = conn.getOutputStream()) {
-//            os.write(out);
-//        }
-//
-//        BufferedReader in = new BufferedReader(
-//                new InputStreamReader(
-//                        conn.getInputStream()));
-//        String inputLine;
-//
-//        while ((inputLine = in.readLine()) != null)
-//            System.out.println(inputLine);
-//        in.close();
-//    }
 }

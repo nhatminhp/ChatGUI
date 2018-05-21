@@ -96,7 +96,7 @@ public class LoginController implements Initializable {
             Map<String,String> parse = newJson.getjson();
             newJson.listJson(parse);
             ///////////////////////////////////////////////////
-            if (parse.get("success").equals("false}")) {
+            if (parse.get("success").equals("false")) {
                 onInvalidLogin();
                 return;
             }if (parse.get("success").equals("true") && parse.get("confirm").equals("false")) {
@@ -124,7 +124,8 @@ public class LoginController implements Initializable {
     public void loadConfirmEmail(ActionEvent event) {
         System.out.println("Forget password hyperlink triggered!");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../confirmEmail/confirmEmail.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../confirmEmail/confirmEmail.fxml"));
+            Parent root = loader.load();
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();

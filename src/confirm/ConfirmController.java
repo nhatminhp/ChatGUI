@@ -1,5 +1,7 @@
 package confirm;
 
+import application.Connect;
+import application.Json;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -15,7 +17,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ConfirmController implements Initializable {
@@ -31,9 +36,28 @@ public class ConfirmController implements Initializable {
     @FXML
     private AnchorPane ConfirmCodePane;
 
+    private Connect newConnect;
+    private Json newJson;
+
+    private String email;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ConfirmCodeField.setOnKeyPressed(event -> this.triggerEnter(event));
+
+        try {
+            newConnect = new Connect();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        newJson = new Json();
+
+        ConfirmCodeField.setOnKeyPressed(event -> {
+            try {
+                this.triggerEnter(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         ConfirmCodeButton.setCursor(Cursor.HAND);
         BackButton.setCursor(Cursor.HAND);
         NoticeCodeError.setText("");
@@ -44,19 +68,24 @@ public class ConfirmController implements Initializable {
         return (Stage) ConfirmCodePane.getScene().getWindow();
     }
 
-    private boolean isCorrectCode(String code) {
-        // CODE
-        return true;
+    private void onFailed() {
+        NoticeCodeError.setText("Wrong confirmation code");
     }
 
     @FXML
-    private void clickConfirmCodeButton(ActionEvent event) {
+    private void clickConfirmCodeButton(ActionEvent event) throws IOException {
         NoticeCodeError.setText("");
         if (!fieldFilled(ConfirmCodeField)) {
             NoticeCodeError.setText("You need to enter the code first !");
-        } else if (!isCorrectCode(ConfirmCodeField.getText())) {
-            NoticeCodeError.setText("Wrong code !");
         } else {
+            String returnedJson = callAPI();
+            newJson.setjson(returnedJson);
+            Map<String, String> parse = newJson.getjson();
+            newJson.listJson(parse);
+            if (parse.get("success").equals("false")) {
+                onFailed();
+                return;
+            }
             loadLogin();
         }
     }
@@ -77,6 +106,18 @@ public class ConfirmController implements Initializable {
         } catch (Exception e) {
             System.out.println("Cannot switch to Login scene.");
         }
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String callAPI() throws IOException {
+        newConnect.addArgument("email", this.email);
+        System.out.println(email);
+        newConnect.addArgument("confirmation_code", ConfirmCodeField.getText());
+        newConnect.setURL("http://localhost:8080/check-confirmation-code");
+        return newConnect.connect();
     }
 
     @FXML
@@ -103,7 +144,7 @@ public class ConfirmController implements Initializable {
     }
 
     @FXML
-    private void triggerEnter(javafx.scene.input.KeyEvent event) {
+    private void triggerEnter(javafx.scene.input.KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER)  {
             clickConfirmCodeButton(new ActionEvent());
         }

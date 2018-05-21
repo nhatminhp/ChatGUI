@@ -1,7 +1,10 @@
 package confirmEmail;
 
+import application.Connect;
+import application.Json;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import confirm.ConfirmController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +21,10 @@ import javafx.stage.StageStyle;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 
@@ -35,6 +41,9 @@ public class ConfirmEmailController implements Initializable {
     @FXML
     private AnchorPane ConfirmEmailPane;
 
+    private Connect newConnect;
+    private Json newJson;
+
     private static boolean isValidEmail(String email) {
         boolean result = true;
         try {
@@ -48,6 +57,14 @@ public class ConfirmEmailController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            newConnect = new Connect();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        newJson = new Json();
+
         ConfirmEmailTextField.setOnKeyPressed(event -> this.triggerEnter(event));
         NextConfirmEmailButton.setCursor(Cursor.HAND);
         BackButton.setCursor(Cursor.HAND);
@@ -59,7 +76,7 @@ public class ConfirmEmailController implements Initializable {
     }
 
     @FXML
-    private void clickNextButton(ActionEvent event) {
+    private void clickNextButton(ActionEvent event) throws IOException {
         NoticeError.setText("");
         if (!fieldFilled(ConfirmEmailTextField)) {
             NoticeError.setText("You need to enter your email first !");
@@ -67,13 +84,40 @@ public class ConfirmEmailController implements Initializable {
 //        else if (!isValidEmail(NoticeError.getText())) {
 //            NoticeError.setText("You need to enter valid email address");
 //        }
-        else loadConfirmCode();
+        else {
+            String returnedJson = callAPI();
+            newJson.setjson(returnedJson);
+            Map<String, String> parse = newJson.getjson();
+            newJson.listJson(parse);
+//            if (parse.get("success").equals("false")) {
+//                onFailed();
+//                return;
+//            }
+            loadConfirmCode();
+        }
+    }
+
+    private String callAPI() throws IOException {
+        newConnect.addArgument("email", this.getEmail());
+        newConnect.setURL("http://localhost:8080/send-confirm-email");
+        return newConnect.connect();
+    }
+
+    public String getEmail(){
+        return ConfirmEmailTextField.getText();
+    }
+
+    private void onFailed() {
+        NoticeError.setText("Unable to send to your entered email");
     }
 
     private void loadConfirmCode() {
         System.out.println("Next Button pressed");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../confirm/confirm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../confirm/confirm.fxml"));
+            Parent root = loader.load();
+            ConfirmController controller = loader.getController();
+            controller.setEmail(this.getEmail());
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
@@ -114,7 +158,11 @@ public class ConfirmEmailController implements Initializable {
     @FXML
     private void triggerEnter(javafx.scene.input.KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER)  {
-            clickNextButton(new ActionEvent());
+            try {
+                clickNextButton(new ActionEvent());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

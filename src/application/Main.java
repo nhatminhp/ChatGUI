@@ -11,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 
 public class Main extends Application {

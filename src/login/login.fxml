@@ -26,15 +26,15 @@
          </font>
       </Label>
       <Hyperlink fx:id="ForgetPassword" layoutX="640.0" layoutY="585.0" onAction="#loadConfirmEmail" text="Forget password ?" />
-      <JFXPasswordField fx:id="LoginPasswordField" layoutX="592.0" layoutY="385.0" prefHeight="31.0" prefWidth="207.0" />
       <JFXTextField fx:id="LoginUsernameTextField" layoutX="591.0" layoutY="309.0" prefHeight="31.0" prefWidth="207.0" />
+      <JFXPasswordField fx:id="LoginPasswordField" layoutX="592.0" layoutY="385.0" prefHeight="31.0" prefWidth="207.0" />
       <JFXCheckBox fx:id="RememberMeCheckbox" layoutX="589.0" layoutY="473.0" text="Remember me" />
       <JFXButton fx:id="LoginButton" layoutX="586.0" layoutY="523.0" onAction="#login" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #66bbe2;" text="Login">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </JFXButton>
-      <Label fx:id="NoticeLabel" layoutX="454.0" layoutY="436.0" prefHeight="29.0" prefWidth="359.0" textFill="RED" />
+      <Label fx:id="NoticeLabel" layoutX="454.0" layoutY="436.0" prefHeight="29.0" prefWidth="472.0" textFill="RED" />
       <Hyperlink fx:id="SignUp" layoutX="506.0" layoutY="585.0" onAction="#signUp" text="Sign up" />
    </children>
    <opaqueInsets>

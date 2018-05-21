@@ -49,11 +49,13 @@ public class Json {
                     if (data.charAt(i) == ',') {
                         break;
                     }
+                    if (data.charAt(i) == '}') {
+                        break;
+                    }
                     if ((checkfirstspace) && (data.charAt(i) == ' ')) continue;
                     value += data.charAt(i);
                     checkfirstspace = false;
                 }
-                //System.out.println(key+":"+value);
                 temp.put(key,value);
             }
         }
