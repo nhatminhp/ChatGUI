@@ -39,6 +39,10 @@ public class MyProfileController implements Initializable {
     @FXML
     private AnchorPane ProfileInfoPane;
 
+    private String token;
+
+    private String returnedJsonString;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         BackButton.setCursor(Cursor.HAND);
@@ -81,6 +85,22 @@ public class MyProfileController implements Initializable {
         } catch (Exception e) {
             System.out.println("Cannot switch to scene.");
         }
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getReturnedJsonString() {
+        return returnedJsonString;
+    }
+
+    public void setReturnedJsonString(String returnedJsonString) {
+        this.returnedJsonString = returnedJsonString;
     }
 
     private Stage getStage() {

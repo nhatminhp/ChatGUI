@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import application.Connect;
 import application.Json;
+import chatbox.ChatController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
@@ -52,6 +53,8 @@ public class LoginController implements Initializable {
     private AnchorPane LoginPane;
     @FXML
     private Label NoticeLabel;
+
+    private String token;
 
 
     @Override
@@ -103,6 +106,7 @@ public class LoginController implements Initializable {
                 onNotConfirmed();
                 return;
             }
+            setToken(parse.get("token"));
             loadChatbox();
         }
     }
@@ -111,8 +115,6 @@ public class LoginController implements Initializable {
     private String callAPI () throws IOException {
         newConnect.addArgument("email", LoginUsernameTextField.getText());
         newConnect.addArgument("password", LoginPasswordField.getText());
-//        newConnect.addArgument("email","phanhuyhung1707@gmail.com");
-//        newConnect.addArgument("password","123");
         newConnect.setURL("http://localhost:8080/login");
         return newConnect.connect();
     }
@@ -163,7 +165,10 @@ public class LoginController implements Initializable {
 
     private void loadChatbox() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../chatbox/chatbox.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../chatbox/chatbox.fxml"));
+            Parent root = loader.load();
+            ChatController controller = loader.getController();
+            controller.setToken(this.getToken());
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
@@ -201,6 +206,14 @@ public class LoginController implements Initializable {
         if (event.getCode() == KeyCode.ENTER)  {
             login(new ActionEvent());
         }
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getPassword() {

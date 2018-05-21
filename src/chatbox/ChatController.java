@@ -1,5 +1,7 @@
 package chatbox;
 
+import application.Connect;
+import application.Json;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
@@ -16,8 +18,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.control.TextArea;
+import myProfile.MyProfileController;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
@@ -39,25 +44,49 @@ public class ChatController implements Initializable {
     @FXML
     private TextArea MessagesTextArea;
 
+    private String token;
+
+    private Connect newConnect;
+
+    private Json newJson;
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TypeChatTextField.setOnKeyPressed(event -> this.triggerEnter(event));
+        TypeChatTextField.setOnKeyPressed(event -> {
+            try {
+                this.triggerEnter(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         ToMyProfileButton.setCursor(Cursor.HAND);
         SendButton.setCursor(Cursor.HAND);
         MessagesTextArea.setEditable(false);
     }
 
     @FXML
-    private void clickToMyProfileButton(ActionEvent event) {
-        loadConfirmCode();
+    private void clickToMyProfileButton(ActionEvent event) throws IOException {
+        String returnedJson = callAPI();
+        newJson.setjson(returnedJson);
+        Map<String,String> parse = newJson.getjson();
+        newJson.listJson(parse);
+        if (parse.get("success").equals("true") && parse.get("verify_token").equals("true")) {
+            loadMyProfile(returnedJson);
+        }
     }
 
-    private void loadConfirmCode() {
+    private void loadMyProfile(String returnedJsonString) {
         System.out.println("To My Profile Button pressed");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../myProfile/myProfile.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../myProfile/myProfile.fxml"));
+            Parent root = loader.load();
+
+            MyProfileController controller = loader.getController();
+            controller.setToken(getToken());
+            controller.setReturnedJsonString(returnedJsonString);
+
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
@@ -72,6 +101,21 @@ public class ChatController implements Initializable {
         }
     }
 
+    private String callAPI () throws IOException {
+        newConnect.addArgument("token", getToken());
+        newConnect.setURL("http://localhost:8080/get-my-profile");
+        return newConnect.connect();
+    }
+
+    public String getToken() {
+        return this.token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+        System.out.println(this.token);
+    }
+
     @FXML
     private void sendMessage(ActionEvent event) {
         // CODE
@@ -82,7 +126,7 @@ public class ChatController implements Initializable {
     }
 
     @FXML
-    private void triggerEnter(javafx.scene.input.KeyEvent event) {
+    private void triggerEnter(javafx.scene.input.KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER)  {
             clickToMyProfileButton(new ActionEvent());
         }
