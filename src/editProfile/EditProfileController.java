@@ -2,9 +2,15 @@ package editProfile;
 
 import java.io.File;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import application.Connect;
+import application.Helper;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
@@ -39,16 +45,36 @@ public class EditProfileController implements Initializable{
 	@FXML
 	private JFXTextField EditPhoneNumberTextField;
 	@FXML
-	private JFXTextField MyDOBTextField;
+	private JFXDatePicker MyDOBDatePicker;
 	@FXML
 	private AnchorPane MyEditProfilePane;
+
+	private Connect newConnect;
+
+    private JsonNode returnedJson;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		BackButton.setCursor(Cursor.HAND);
-		SaveMyProfileButton.setCursor(Cursor.HAND);
-		EditProfileImageButton.setCursor(Cursor.HAND);
-	}
+        BackButton.setCursor(Cursor.HAND);
+        SaveMyProfileButton.setCursor(Cursor.HAND);
+        EditProfileImageButton.setCursor(Cursor.HAND);
+    }
+
+    public void initialize(JsonNode json) {
+        Helper helper = new Helper();
+        String user_name = helper.removeDoubleCode(json.get("user_name").toString());
+        String email = helper.removeDoubleCode(json.get("email").toString());
+        String phone_number = helper.removeDoubleCode(json.get("phone_number").toString());
+        String DOB = helper.removeDoubleCode(json.get("DOB").toString());
+        EditUserNameTextField.setText(user_name);
+        EditEmailTextField.setText(email);
+        EditPhoneNumberTextField.setText(phone_number);
+        if (!DOB.equals("")){
+            String[] parts = DOB.split("-");
+            System.out.println(parts[0] + " " + parts[1] + " " + parts[2]);
+//            MyDOBDatePicker.setValue(LocalDate.of(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]),Integer.parseInt(parts[2])));
+        }
+    }
 
 	@FXML
 	private void clickBackButton(ActionEvent event) {
@@ -111,4 +137,9 @@ public class EditProfileController implements Initializable{
 	private Stage getStage() {
 		return (Stage) MyEditProfilePane.getScene().getWindow();
 	}
+
+    public void setReturnedJson(JsonNode newJson) {
+        this.returnedJson = newJson;
+    }
+
 }

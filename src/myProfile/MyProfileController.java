@@ -1,6 +1,10 @@
 package myProfile;
 
+import application.Connect;
+import application.Helper;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.jfoenix.controls.JFXButton;
+import editProfile.EditProfileController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,10 +13,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -35,13 +42,17 @@ public class MyProfileController implements Initializable {
     @FXML
     private Label DOBLabel;
     @FXML
-    private ImageView MyImage;
+    private ImageView MyImageView;
     @FXML
     private AnchorPane ProfileInfoPane;
 
     private String token;
 
-    private String returnedJsonString;
+    private JsonNode returnedJson;
+
+    private Connect newConnect;
+
+    private JsonNode newJson;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,11 +60,29 @@ public class MyProfileController implements Initializable {
         ToEditProfileButton.setCursor(Cursor.HAND);
     }
 
+    public void initialize(JsonNode json) {
+        Helper helper = new Helper();
+        File file = new File("../profile.png");
+        Image image = new Image(file.toURI().toString());
+        MyImageView.setImage(image);
+        String user_name = helper.removeDoubleCode(json.get("user_name").toString());
+        String email = helper.removeDoubleCode(json.get("email").toString());
+        String phone_number = helper.removeDoubleCode(json.get("phone_number").toString());
+        String DOB = helper.removeDoubleCode(json.get("DOB").toString());
+        UsernameLabel.setText(user_name);
+        EmailLabel.setText(email);
+        PhoneNumberLabel.setText(phone_number);
+        DOBLabel.setText(DOB);
+    }
+
+
     @FXML
     private void clickBackButton(ActionEvent event) {
         System.out.println("Back Button pressed");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../chatbox/chatbox.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../chatbox/chatbox.fxml"));
+            Parent root = loader.load();
+
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
@@ -69,10 +98,21 @@ public class MyProfileController implements Initializable {
     }
 
     @FXML
-    private void toEditProfile(ActionEvent event) {
+    private void toEditProfile(ActionEvent event) throws IOException {
         System.out.println("To Edit Profile Button pressed");
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("../editProfile/editProfile.fxml"));
+        loadEditProfile();
+    }
+
+    private void loadEditProfile() throws IOException {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../editProfile/editProfile.fxml"));
+            Parent root = loader.load();
+
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaa         "+returnedJson);
+            EditProfileController controller = loader.getController();
+            controller.setReturnedJson(returnedJson);
+            controller.initialize(returnedJson);
+
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
@@ -82,9 +122,7 @@ public class MyProfileController implements Initializable {
             newStage.show();
 
             this.getStage().close();
-        } catch (Exception e) {
-            System.out.println("Cannot switch to scene.");
-        }
+
     }
 
     public String getToken() {
@@ -95,13 +133,14 @@ public class MyProfileController implements Initializable {
         this.token = token;
     }
 
-    public String getReturnedJsonString() {
-        return returnedJsonString;
+    public JsonNode getReturnedJson() {
+        return returnedJson;
     }
 
-    public void setReturnedJsonString(String returnedJsonString) {
-        this.returnedJsonString = returnedJsonString;
+    public void setReturnedJson(JsonNode returnedJson) {
+        this.returnedJson = returnedJson;
     }
+
 
     private Stage getStage() {
         return (Stage) ProfileInfoPane.getScene().getWindow();

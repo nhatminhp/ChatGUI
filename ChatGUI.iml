@@ -48,5 +48,8 @@
     <orderEntry type="library" name="fontawesomefx-8.9" level="project" />
     <orderEntry type="library" name="javax.mail" level="project" />
     <orderEntry type="library" name="java-json" level="project" />
+    <orderEntry type="library" name="jackson-databind-2.8.0.rc2" level="project" />
+    <orderEntry type="library" name="jackson-core-2.8.0.rc2" level="project" />
+    <orderEntry type="library" name="jackson-annotations-2.8.0.rc2" level="project" />
   </component>
 </module>

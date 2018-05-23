@@ -2,6 +2,9 @@ package chatbox;
 
 import application.Connect;
 import application.Json;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
@@ -21,6 +24,7 @@ import javafx.scene.control.TextArea;
 import myProfile.MyProfileController;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -48,7 +52,7 @@ public class ChatController implements Initializable {
 
     private Connect newConnect;
 
-    private Json newJson;
+    private JsonNode newJson;
 
 
 
@@ -64,20 +68,25 @@ public class ChatController implements Initializable {
         ToMyProfileButton.setCursor(Cursor.HAND);
         SendButton.setCursor(Cursor.HAND);
         MessagesTextArea.setEditable(false);
+        try {
+            newConnect = new Connect();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void clickToMyProfileButton(ActionEvent event) throws IOException {
         String returnedJson = callAPI();
-        newJson.setjson(returnedJson);
-        Map<String,String> parse = newJson.getjson();
-        newJson.listJson(parse);
-        if (parse.get("success").equals("true") && parse.get("verify_token").equals("true")) {
-            loadMyProfile(returnedJson);
+        ObjectMapper mapper = new ObjectMapper();
+        newJson  = mapper.readTree(returnedJson);                 //return data
+        System.out.println(newJson);
+        if (newJson.get("success").asBoolean() && newJson.get("verify_token").asBoolean()) {
+            loadMyProfile(newJson);
         }
     }
 
-    private void loadMyProfile(String returnedJsonString) {
+    private void loadMyProfile(JsonNode returnedJson) {
         System.out.println("To My Profile Button pressed");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../myProfile/myProfile.fxml"));
@@ -85,7 +94,8 @@ public class ChatController implements Initializable {
 
             MyProfileController controller = loader.getController();
             controller.setToken(getToken());
-            controller.setReturnedJsonString(returnedJsonString);
+            controller.setReturnedJson(returnedJson);
+            controller.initialize(returnedJson);
 
             Scene scene = new Scene(root);
 
@@ -113,7 +123,6 @@ public class ChatController implements Initializable {
 
     public void setToken(String token) {
         this.token = token;
-        System.out.println(this.token);
     }
 
     @FXML
