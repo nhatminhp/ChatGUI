@@ -10,37 +10,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ChatPane" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chatbox.ChatController">
+<AnchorPane fx:id="ChatPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chatbox.ChatController">
    <children>
-      <ListView layoutY="257.0" prefHeight="543.0" prefWidth="314.0" />
-      <ListView prefHeight="208.0" prefWidth="314.0" />
-      <ImageView fx:id="MyProfileImage" fitHeight="110.0" fitWidth="110.0" layoutX="32.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="MyNameLabel" layoutX="31.0" layoutY="154.0" prefHeight="20.0" prefWidth="97.0" text="My Name here">
+      <ListView layoutY="286.0" prefHeight="837.0" prefWidth="353.0" />
+      <ListView prefHeight="234.0" prefWidth="353.0" />
+      <ImageView fx:id="MyProfileImage" fitHeight="100.0" fitWidth="100.0" layoutX="37.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="MyNameLabel" layoutX="36.0" layoutY="159.0" prefHeight="25.0" prefWidth="102.0" text="My Name here">
          <font>
-            <Font size="13.0" />
+            <Font size="15.0" />
          </font></Label>
-      <Label layoutX="31.0" layoutY="55.0" text="image here" />
-      <AnchorPane fx:id="MessagePane" layoutX="313.0" prefHeight="800.0" prefWidth="967.0" style="-fx-background-color: #edf4ff; -fx-border-color: black;">
+      <AnchorPane fx:id="MessagePane" layoutX="351.0" layoutY="-1.0" prefHeight="1123.0" prefWidth="1684.0" style="-fx-background-color: #edf4ff; -fx-border-color: black;">
          <children>
-            <TextArea fx:id="MessagesTextArea" layoutX="47.0" layoutY="39.0" prefHeight="638.0" prefWidth="874.0" style="-fx-border-color: #e5e5e5; -fx-border-radius: 5;" />
-            <JFXButton fx:id="SendButton" layoutX="846.0" layoutY="704.0" onAction="#sendMessage" prefHeight="48.0" prefWidth="75.0" style="-fx-background-color: #1b8ff5;" text="Send">
+            <TextArea fx:id="MessagesTextArea" layoutX="98.0" layoutY="75.0" prefHeight="849.0" prefWidth="1504.0" style="-fx-border-color: #e5e5e5; -fx-border-radius: 5;" />
+            <JFXButton fx:id="SendButton" layoutX="1527.0" layoutY="1004.0" onAction="#sendMessage" prefHeight="48.0" prefWidth="75.0" style="-fx-background-color: #1b8ff5;" text="Send">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </JFXButton>
-            <JFXTextArea fx:id="TypeChatTextField" layoutX="47.0" layoutY="691.0" prefHeight="61.0" prefWidth="777.0" />
+            <JFXTextArea fx:id="TypeChatTextField" layoutX="100.0" layoutY="991.0" prefHeight="61.0" prefWidth="1347.0" />
+            <JFXButton fx:id="ExitButton" layoutX="1616.0" layoutY="14.0" prefHeight="48.0" prefWidth="49.0" text="Exit" />
          </children>
       </AnchorPane>
-      <JFXButton fx:id="ToMyProfileButton" layoutX="183.0" layoutY="61.0" onAction="#clickToMyProfileButton" prefHeight="39.0" prefWidth="110.0" text="      My Profile" textFill="#007dff">
+      <JFXButton fx:id="ToMyProfileButton" layoutX="197.0" layoutY="60.0" onAction="#clickToMyProfileButton" prefHeight="39.0" prefWidth="110.0" text="      My Profile" textFill="#007dff">
          <font>
             <Font size="14.0" />
          </font></JFXButton>
-      <MaterialDesignIconView fill="#1b8ff5" glyphName="ACCOUNT" layoutX="190.0" layoutY="90.0" size="25.0" text="" />
-      <Label layoutX="60.0" layoutY="224.0" prefHeight="17.0" prefWidth="68.0" text="Friend List">
+      <MaterialDesignIconView fill="#1b8ff5" glyphName="ACCOUNT" layoutX="203.0" layoutY="89.0" size="25.0" text="" />
+      <Label layoutX="67.0" layoutY="246.0" prefHeight="25.0" prefWidth="75.0" text="Friend List">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <MaterialDesignIconView fill="#1b8ff5" glyphName="ACCOUNT" layoutX="20.0" layoutY="245.0" size="25.0" text="" />
+      <MaterialDesignIconView fill="#1b8ff5" glyphName="ACCOUNT" layoutX="32.0" layoutY="268.0" size="25.0" text="" wrappingWidth="25.000023692846298" />
    </children>
 </AnchorPane>

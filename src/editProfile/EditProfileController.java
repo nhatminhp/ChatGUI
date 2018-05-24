@@ -33,6 +33,8 @@ public class EditProfileController implements Initializable{
 
 	@FXML
 	private JFXButton BackButton;
+    @FXML
+    private JFXButton ExitButton;
 	@FXML
 	private ImageView MyEditProfileImage;
 	@FXML
@@ -58,6 +60,10 @@ public class EditProfileController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+	    Helper helper = new Helper();
+        helper.setIconButton(BackButton,"../images/back.png");
+        helper.setIconButton(ExitButton,"../images/exit.png");
+
         BackButton.setCursor(Cursor.HAND);
         SaveMyProfileButton.setCursor(Cursor.HAND);
         EditProfileImageButton.setCursor(Cursor.HAND);
@@ -77,6 +83,11 @@ public class EditProfileController implements Initializable{
             System.out.println(parts[0] + " " + parts[1] + " " + parts[2]);
             //MyDOBDatePicker.setValue(LocalDate.of(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]),Integer.parseInt(parts[2])));
         }
+    }
+
+    @FXML
+    private void Exit(ActionEvent event) {
+        this.getStage().close();
     }
 
 	@FXML

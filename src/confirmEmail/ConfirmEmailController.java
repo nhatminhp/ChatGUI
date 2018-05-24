@@ -1,6 +1,7 @@
 package confirmEmail;
 
 import application.Connect;
+import application.Helper;
 import application.Json;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -37,6 +38,8 @@ public class ConfirmEmailController implements Initializable {
     @FXML
     private JFXButton BackButton;
     @FXML
+    private JFXButton ExitButton;
+    @FXML
     private JFXTextField ConfirmEmailTextField;
     @FXML
     private Label NoticeError;
@@ -44,15 +47,10 @@ public class ConfirmEmailController implements Initializable {
     private AnchorPane ConfirmEmailPane;
 
     private Connect newConnect;
+
     private Json newJson;
 
 
-
-    public static boolean isValidEmail(String email) {
-        Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile( "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
-        return matcher.find();
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,6 +62,10 @@ public class ConfirmEmailController implements Initializable {
 
         newJson = new Json();
 
+        Helper helper = new Helper();
+        helper.setIconButton(ExitButton,"../images/exit.png");
+        helper.setIconButton(BackButton,"../images/back.png");
+
         ConfirmEmailTextField.setOnKeyPressed(event -> this.triggerEnter(event));
         NextConfirmEmailButton.setCursor(Cursor.HAND);
         BackButton.setCursor(Cursor.HAND);
@@ -72,6 +74,11 @@ public class ConfirmEmailController implements Initializable {
 
     private boolean fieldFilled(JFXTextField textField) {
         return (textField.getText() != null && !textField.getText().trim().isEmpty());
+    }
+
+    @FXML
+    private void Exit(ActionEvent event) {
+        this.getStage().close();
     }
 
     @FXML
@@ -120,7 +127,7 @@ public class ConfirmEmailController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application.");
             newStage.setScene(scene);
             newStage.show();
@@ -139,7 +146,7 @@ public class ConfirmEmailController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application");
             newStage.setScene(scene);
             newStage.show();
@@ -163,5 +170,11 @@ public class ConfirmEmailController implements Initializable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static boolean isValidEmail(String email) {
+        Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile( "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        return matcher.find();
     }
 }

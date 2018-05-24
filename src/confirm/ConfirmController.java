@@ -1,6 +1,7 @@
 package confirm;
 
 import application.Connect;
+import application.Helper;
 import application.Json;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -30,6 +31,8 @@ public class ConfirmController implements Initializable {
     @FXML
     private JFXButton BackButton;
     @FXML
+    private JFXButton ExitButton;
+    @FXML
     private JFXTextField ConfirmCodeField;
     @FXML
     private Label NoticeCodeError;
@@ -58,9 +61,19 @@ public class ConfirmController implements Initializable {
                 e.printStackTrace();
             }
         });
+
+        Helper helper = new Helper();
+        helper.setIconButton(BackButton,"../images/back.png");
+        helper.setIconButton(ExitButton,"../images/exit.png");
+
         ConfirmCodeButton.setCursor(Cursor.HAND);
         BackButton.setCursor(Cursor.HAND);
         NoticeCodeError.setText("");
+    }
+
+    @FXML
+    private void Exit(ActionEvent event) {
+        this.getStage().close();
     }
 
 
@@ -97,7 +110,7 @@ public class ConfirmController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application.");
             newStage.setScene(scene);
             newStage.show();
@@ -128,7 +141,7 @@ public class ConfirmController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application");
             newStage.setScene(scene);
             newStage.show();

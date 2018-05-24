@@ -33,6 +33,8 @@ public class MyProfileController implements Initializable {
     @FXML
     private JFXButton BackButton;
     @FXML
+    private JFXButton ExitButton;
+    @FXML
     private JFXButton ToEditProfileButton;
     @FXML
     private Label UsernameLabel;
@@ -59,6 +61,10 @@ public class MyProfileController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         BackButton.setCursor(Cursor.HAND);
         ToEditProfileButton.setCursor(Cursor.HAND);
+
+        Helper helper = new Helper();
+        helper.setIconButton(BackButton,"../images/back.png");
+        helper.setIconButton(ExitButton,"../images/exit.png");
     }
 
     public void initialize(JsonNode json) {
@@ -74,6 +80,11 @@ public class MyProfileController implements Initializable {
         EmailLabel.setText(email);
         PhoneNumberLabel.setText(phone_number);
         DOBLabel.setText(DOB);
+    }
+
+    @FXML
+    private void Exit(ActionEvent event) {
+        this.getStage().close();
     }
 
 

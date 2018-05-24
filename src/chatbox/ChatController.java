@@ -37,6 +37,8 @@ public class ChatController implements Initializable {
     @FXML
     private JFXButton SendButton;
     @FXML
+    private JFXButton ExitButton;
+    @FXML
     private JFXTextArea TypeChatTextField;
     @FXML
     private Label MyNameLabel;
@@ -77,6 +79,9 @@ public class ChatController implements Initializable {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
+        Helper helper = new Helper();
+        helper.setIconButton(ExitButton,"../images/exit.png");
     }
 
     public void initialize() throws IOException {

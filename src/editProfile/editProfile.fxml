@@ -8,43 +8,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MyEditProfilePane" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="editProfile.EditProfileController">
+<AnchorPane fx:id="MyEditProfilePane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="editProfile.EditProfileController">
    <children>
-      <ImageView fx:id="MyEditProfileImage" fitHeight="300.0" fitWidth="300.0" layoutX="490.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane layoutX="413.0" layoutY="447.0" prefHeight="259.0" prefWidth="458.0">
+      <ImageView fx:id="MyEditProfileImage" fitHeight="300.0" fitWidth="300.0" layoutX="810.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane layoutX="715.0" layoutY="472.0" prefHeight="325.0" prefWidth="531.0">
          <children>
-            <Label layoutX="37.0" layoutY="27.0" text="Username">
+            <Label layoutX="37.0" layoutY="26.0" text="Username">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="37.0" layoutY="172.0" text="Date of birth">
+            <Label layoutX="38.0" layoutY="238.0" text="Date of birth">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="37.0" layoutY="78.0" text="Email">
+            <Label layoutX="38.0" layoutY="104.0" text="Email">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="37.0" layoutY="124.0" text="Phone number">
+            <Label layoutX="38.0" layoutY="172.0" text="Phone number">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="EditUserNameTextField" layoutX="184.0" layoutY="21.0" prefHeight="31.0" prefWidth="234.0" />
-            <JFXTextField fx:id="EditEmailTextField" layoutX="184.0" layoutY="72.0" prefHeight="31.0" prefWidth="234.0" />
-            <JFXTextField fx:id="EditPhoneNumberTextField" layoutX="184.0" layoutY="118.0" prefHeight="31.0" prefWidth="234.0" />
-            <JFXButton fx:id="SaveMyProfileButton" layoutX="201.0" layoutY="230.0" onAction="#clickSaveButton" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #66bbe2;" text="Save" />
-            <JFXDatePicker layoutX="184.0" layoutY="167.0" prefHeight="31.0" prefWidth="234.0" />
+            <JFXTextField fx:id="EditUserNameTextField" layoutX="184.0" layoutY="21.0" prefHeight="31.0" prefWidth="274.0" />
+            <JFXTextField fx:id="EditEmailTextField" layoutX="184.0" layoutY="99.0" prefHeight="31.0" prefWidth="274.0" />
+            <JFXTextField fx:id="EditPhoneNumberTextField" layoutX="184.0" layoutY="167.0" prefHeight="31.0" prefWidth="274.0" />
+            <JFXButton fx:id="SaveMyProfileButton" layoutX="238.0" layoutY="312.0" onAction="#clickSaveButton" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #66bbe2;" text="Save" />
+            <JFXDatePicker layoutX="184.0" layoutY="233.0" prefHeight="31.0" prefWidth="274.0" />
          </children>
       </AnchorPane>
-      <JFXButton fx:id="EditProfileImageButton" layoutX="740.0" layoutY="369.0" onAction="#editProfileImage" prefHeight="31.0" prefWidth="50.0" style="-fx-background-color: #66bbe2;" text="Edit" />
-      <JFXButton fx:id="BackButton" layoutX="50.0" layoutY="50.0" onAction="#clickBackButton" prefHeight="29.0" prefWidth="50.0" text="Back">
+      <JFXButton fx:id="EditProfileImageButton" layoutX="1060.0" layoutY="377.0" onAction="#editProfileImage" prefHeight="31.0" prefWidth="50.0" style="-fx-background-color: #66bbe2;" text="Edit" />
+      <JFXButton fx:id="BackButton" layoutX="50.0" layoutY="50.0" onAction="#clickBackButton" prefHeight="50.0" prefWidth="50.0" text="Back">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font size="13.0" />
          </font>
       </JFXButton>
+      <JFXButton fx:id="ExitButton" layoutX="1836.0" layoutY="25.0" onAction="#Exit" prefHeight="50.0" prefWidth="56.0" text="Exit" />
    </children>
 </AnchorPane>

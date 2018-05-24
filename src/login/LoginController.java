@@ -86,11 +86,7 @@ public class LoginController implements Initializable {
         });
         LoginButton.setCursor(Cursor.HAND);
         ForgetPassword.setCursor(Cursor.HAND);
-        Image image = new Image(getClass().getResourceAsStream("../images/exit.png"));
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(50);
-        imageView.setFitWidth(50);
-        ExitButton.setGraphic(imageView);
+        (new Helper()).setIconButton(ExitButton,"../images/exit.png");
     }
 
     private Stage getStage() {
@@ -146,7 +142,7 @@ public class LoginController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application.");
             newStage.setScene(scene);
             newStage.show();
@@ -166,7 +162,7 @@ public class LoginController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application");
             newStage.setScene(scene);
             newStage.show();
@@ -189,7 +185,7 @@ public class LoginController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application");
             newStage.setScene(scene);
             newStage.show();
