@@ -27,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import myProfile.MyProfileController;
 
 public class EditProfileController implements Initializable{
 
@@ -52,6 +53,8 @@ public class EditProfileController implements Initializable{
 	private Connect newConnect;
 
     private JsonNode returnedJson;
+
+    private String token;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -72,7 +75,7 @@ public class EditProfileController implements Initializable{
         if (!DOB.equals("")){
             String[] parts = DOB.split("-");
             System.out.println(parts[0] + " " + parts[1] + " " + parts[2]);
-//            MyDOBDatePicker.setValue(LocalDate.of(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]),Integer.parseInt(parts[2])));
+            //MyDOBDatePicker.setValue(LocalDate.of(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]),Integer.parseInt(parts[2])));
         }
     }
 
@@ -97,7 +100,14 @@ public class EditProfileController implements Initializable{
 	private void loadBackward() {
 		System.out.println("Back Button pressed");
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../myProfile/myProfile.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../myProfile/myProfile.fxml"));
+			Parent root = loader.load();
+
+            MyProfileController controller = loader.getController();
+            controller.setReturnedJson(this.returnedJson);
+            controller.setToken(this.token);
+            controller.initialize(this.returnedJson);
+
 			Scene scene = new Scene(root);
 
 			Stage newStage = new Stage();
@@ -133,6 +143,10 @@ public class EditProfileController implements Initializable{
 			alert.showAndWait();
 		}
 	}
+
+	public void setToken(String token) {
+	    this.token = token;
+    }
 
 	private Stage getStage() {
 		return (Stage) MyEditProfilePane.getScene().getWindow();

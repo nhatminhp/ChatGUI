@@ -2,6 +2,7 @@ package myProfile;
 
 import application.Connect;
 import application.Helper;
+import chatbox.ChatController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.jfoenix.controls.JFXButton;
 import editProfile.EditProfileController;
@@ -83,6 +84,10 @@ public class MyProfileController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../chatbox/chatbox.fxml"));
             Parent root = loader.load();
 
+            ChatController controller = loader.getController();
+            controller.setToken(getToken());
+            controller.initialize();
+
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
@@ -108,9 +113,9 @@ public class MyProfileController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../editProfile/editProfile.fxml"));
             Parent root = loader.load();
 
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaa         "+returnedJson);
             EditProfileController controller = loader.getController();
             controller.setReturnedJson(returnedJson);
+            controller.setToken(getToken());
             controller.initialize(returnedJson);
 
             Scene scene = new Scene(root);

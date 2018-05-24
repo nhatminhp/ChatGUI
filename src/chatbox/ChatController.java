@@ -1,6 +1,7 @@
 package chatbox;
 
 import application.Connect;
+import application.Helper;
 import application.Json;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -54,6 +55,9 @@ public class ChatController implements Initializable {
 
     private JsonNode newJson;
 
+    private JsonNode profileJson;
+
+    private JsonNode friendListJson;
 
 
     @Override
@@ -73,6 +77,17 @@ public class ChatController implements Initializable {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void initialize() throws IOException {
+        Helper helper = new Helper();
+        System.out.println(callFriendListAPI());
+
+        String returnedJson = callAPI();
+        ObjectMapper mapper = new ObjectMapper();
+        profileJson  = mapper.readTree(returnedJson);
+
+        MyNameLabel.setText(helper.removeDoubleCode(profileJson.get("user_name").toString()));
     }
 
     @FXML
@@ -115,6 +130,13 @@ public class ChatController implements Initializable {
         newConnect.addArgument("token", getToken());
         newConnect.setURL("http://localhost:8080/get-my-profile");
         return newConnect.connect();
+    }
+
+    private String callFriendListAPI() throws IOException {
+        Connect connect = new Connect();
+        connect.addArgument("token", getToken());
+        connect.setURL("http://localhost:8080/get-friend-list");
+        return connect.connect();
     }
 
     public String getToken() {

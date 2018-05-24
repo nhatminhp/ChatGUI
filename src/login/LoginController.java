@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import application.Connect;
+import application.Helper;
 import application.Json;
 import chatbox.ChatController;
 import com.jfoenix.controls.JFXButton;
@@ -24,6 +25,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -39,6 +42,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private JFXButton LoginButton;
+    @FXML
+    private JFXButton ExitButton;
     @FXML
     private JFXCheckBox RememberMeCheckbox;
     @FXML
@@ -81,10 +86,20 @@ public class LoginController implements Initializable {
         });
         LoginButton.setCursor(Cursor.HAND);
         ForgetPassword.setCursor(Cursor.HAND);
+        Image image = new Image(getClass().getResourceAsStream("../images/exit.png"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+        ExitButton.setGraphic(imageView);
     }
 
     private Stage getStage() {
         return (Stage) LoginPane.getScene().getWindow();
+    }
+
+    @FXML
+    private void Exit(ActionEvent event) {
+        this.getStage().close();
     }
 
     @FXML
@@ -169,6 +184,8 @@ public class LoginController implements Initializable {
             Parent root = loader.load();
             ChatController controller = loader.getController();
             controller.setToken(this.getToken());
+            controller.initialize();
+
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
