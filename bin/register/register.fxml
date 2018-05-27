@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import de.jensd.fx.glyphs.weathericons.WeatherIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,33 +15,26 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <JFXPasswordField id="PasswordField" fx:id="NewAccPassword" layoutX="949.0" layoutY="684.0" prefHeight="25.0" prefWidth="236.0" />
-      <JFXPasswordField id="ConfirmPasswordField" fx:id="NewAccConfirmPassword" layoutX="949.0" layoutY="768.0" prefHeight="25.0" prefWidth="236.0" />
       <JFXTextField id="UsernameTextField" fx:id="NewAccUserName" layoutX="949.0" layoutY="362.0" prefHeight="25.0" prefWidth="236.0" />
-      <JFXTextField id="EmailTextField" fx:id="NewAccEmail" layoutX="949.0" layoutY="449.0" prefHeight="25.0" prefWidth="236.0" />
-      <JFXTextField id="PhoneNumberField" fx:id="NewAccPhoneNumber" layoutX="949.0" layoutY="607.0" prefHeight="25.0" prefWidth="236.0" />
+      <JFXTextField id="EmailTextField" fx:id="NewAccEmail" layoutX="949.0" layoutY="461.0" prefHeight="25.0" prefWidth="236.0" />
+      <JFXPasswordField id="PasswordField" fx:id="NewAccPassword" layoutX="949.0" layoutY="554.0" prefHeight="25.0" prefWidth="236.0" />
+      <JFXPasswordField id="ConfirmPasswordField" fx:id="NewAccConfirmPassword" layoutX="949.0" layoutY="650.0" prefHeight="25.0" prefWidth="236.0" />
+      <JFXButton id="NextButton" fx:id="NextButton" layoutX="949.0" layoutY="798.0" onAction="#clickNextButton" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #66bbe2;" text="Next">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
       <Label layoutX="773.0" layoutY="364.0" prefHeight="21.0" prefWidth="79.0" text="Username">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="772.0" layoutY="451.0" prefHeight="21.0" prefWidth="43.0" text="Email">
+      <Label layoutX="772.0" layoutY="465.0" prefHeight="21.0" prefWidth="43.0" text="Email">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <JFXDatePicker id="DOBField" fx:id="NewAccDOB" layoutX="949.0" layoutY="528.0" prefHeight="25.0" prefWidth="236.0" />
-      <Label layoutX="771.0" layoutY="530.0" prefHeight="21.0" prefWidth="96.0" text="Date of Birth">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="773.0" layoutY="609.0" prefHeight="21.0" prefWidth="104.0" text="Phone number">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="773.0" layoutY="686.0" prefHeight="21.0" prefWidth="79.0" text="Password">
+      <Label layoutX="772.0" layoutY="559.0" prefHeight="21.0" prefWidth="79.0" text="Password">
          <font>
             <Font size="15.0" />
          </font>
@@ -51,46 +42,61 @@
             <Insets />
          </opaqueInsets>
       </Label>
-      <Label layoutX="775.0" layoutY="770.0" text="Confirm password">
+      <Label layoutX="773.0" layoutY="655.0" text="Confirm password">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <JFXButton id="NextButton" fx:id="NextButton" layoutX="949.0" layoutY="877.0" onAction="#clickNextButton" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #66bbe2;" text="Next">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXButton>
       <Label layoutX="848.0" layoutY="362.0" text="*" textFill="RED">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="811.0" layoutY="449.0" text="*" textFill="RED">
+      <Label layoutX="815.0" layoutY="463.0" text="*" textFill="RED">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="844.0" layoutY="684.0" text="*" textFill="RED">
+      <Label layoutX="844.0" layoutY="557.0" text="*" textFill="RED">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="901.0" layoutY="768.0" prefHeight="26.0" prefWidth="1.0" text="*" textFill="RED">
+      <Label layoutX="899.0" layoutY="653.0" prefHeight="26.0" prefWidth="1.0" text="*" textFill="RED">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <WeatherIconView glyphName="UMBRELLA" layoutX="59.0" layoutY="71.0" rotate="-93.4" size="20.0" />
-      <JFXButton fx:id="BackButton" layoutX="55.0" layoutY="45.0" onAction="#loadBackward" prefHeight="37.0" prefWidth="79.0" text="    Back">
+      <JFXButton fx:id="BackButton" layoutX="51.0" layoutY="46.0" onAction="#loadBackward" prefHeight="50.0" prefWidth="50.0" text=".">
          <font>
             <Font size="16.0" />
          </font>
       </JFXButton>
-      <Label fx:id="NoticeRegisterError" layoutX="502.0" layoutY="883.0" prefHeight="17.0" prefWidth="296.0" textFill="RED">
+      <Label fx:id="NoticeRegisterError" layoutX="823.0" layoutY="748.0" prefHeight="26.0" prefWidth="408.0" textFill="RED">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
+      <Label fx:id="ConfirmPasswordError" layoutX="819.0" layoutY="701.0" prefHeight="21.0" prefWidth="458.0" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="PasswordError" layoutX="813.0" layoutY="593.0" prefHeight="50.0" prefWidth="476.0" textAlignment="JUSTIFY" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="EmailError" layoutX="813.0" layoutY="519.0" prefHeight="21.0" prefWidth="408.0" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="UsernameError" layoutX="819.0" layoutY="413.0" prefHeight="21.0" prefWidth="408.0" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="ExitButton" layoutX="1837.0" layoutY="33.0" opacity="0.4" prefHeight="50.0" prefWidth="50.0" text="." />
    </children>
 </AnchorPane>

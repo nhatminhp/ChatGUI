@@ -2,10 +2,8 @@ package chatbox;
 
 import application.Connect;
 import application.Helper;
-import application.Json;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
@@ -20,14 +18,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.scene.control.TextArea;
 import myProfile.MyProfileController;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
@@ -82,6 +78,7 @@ public class ChatController implements Initializable {
 
         Helper helper = new Helper();
         helper.setIconButton(ExitButton,"../images/exit.png");
+        helper.setIconButton(MyProfileImage,"../images/profile.png",100,100);
     }
 
     public void initialize() throws IOException {
@@ -93,6 +90,11 @@ public class ChatController implements Initializable {
         profileJson  = mapper.readTree(returnedJson);
 
         MyNameLabel.setText(helper.removeDoubleCode(profileJson.get("user_name").toString()));
+    }
+
+    @FXML
+    private void Exit(ActionEvent event){
+        this.getStage().close();
     }
 
     @FXML
@@ -120,7 +122,7 @@ public class ChatController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application");
             newStage.setScene(scene);
             newStage.show();

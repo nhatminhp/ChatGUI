@@ -22,17 +22,17 @@
          <font>
             <Font size="14.0" />
          </font></JFXTextField>
-      <JFXButton fx:id="NextConfirmEmailButton" layoutX="915.0" layoutY="409.0" onAction="#clickNextButton" prefHeight="29.0" prefWidth="60.0" style="-fx-background-color: #66bbe2;" text="Next" />
-      <Label fx:id="NoticeError" layoutX="502.0" layoutY="341.0" prefHeight="20.0" prefWidth="275.0" textAlignment="CENTER" textFill="RED">
+      <JFXButton fx:id="NextConfirmEmailButton" layoutX="915.0" layoutY="427.0" onAction="#clickNextButton" prefHeight="29.0" prefWidth="60.0" style="-fx-background-color: #66bbe2;" text="Next" />
+      <Label fx:id="NoticeError" layoutX="708.0" layoutY="394.0" prefHeight="20.0" prefWidth="474.0" textAlignment="CENTER" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="BackButton" layoutX="48.0" layoutY="51.0" onAction="#clickBackButton" prefHeight="50.0" prefWidth="50.0" text="Back">
+      <JFXButton fx:id="BackButton" layoutX="48.0" layoutY="51.0" onAction="#clickBackButton" prefHeight="50.0" prefWidth="50.0" text=".">
          <font>
             <Font size="13.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="ExitButton" layoutX="1839.0" layoutY="25.0" onAction="#Exit" opacity="0.4" prefHeight="50.0" prefWidth="50.0" text="Exit" />
+      <JFXButton fx:id="ExitButton" layoutX="1839.0" layoutY="25.0" onAction="#Exit" opacity="0.4" prefHeight="50.0" prefWidth="50.0" text="." />
    </children>
 </AnchorPane>

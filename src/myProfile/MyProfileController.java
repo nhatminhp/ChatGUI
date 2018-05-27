@@ -17,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +33,8 @@ public class MyProfileController implements Initializable {
     private JFXButton BackButton;
     @FXML
     private JFXButton ExitButton;
+    @FXML
+    private JFXButton ChangePasswordButton;
     @FXML
     private JFXButton ToEditProfileButton;
     @FXML
@@ -102,7 +103,7 @@ public class MyProfileController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application.");
             newStage.setScene(scene);
             newStage.show();
@@ -132,7 +133,7 @@ public class MyProfileController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UTILITY);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application.");
             newStage.setScene(scene);
             newStage.show();

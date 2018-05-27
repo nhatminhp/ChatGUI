@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -36,6 +36,12 @@ public class ConfirmController implements Initializable {
     private JFXTextField ConfirmCodeField;
     @FXML
     private Label NoticeCodeError;
+    @FXML
+    private Label ConfirmCodeError;
+    @FXML
+    private Label PasswordError;
+    @FXML
+    private Label ConfirmPasswordError;
     @FXML
     private AnchorPane ConfirmCodePane;
 

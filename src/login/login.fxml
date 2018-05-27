@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="LoginPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
    <children>
-      <Label layoutX="751.0" layoutY="374.0" text="Username">
+      <Label layoutX="751.0" layoutY="374.0" text="Email">
          <font>
             <Font size="16.0" />
          </font></Label>
@@ -29,8 +29,8 @@
          <font>
             <Font size="13.0" />
          </font></Hyperlink>
-      <JFXTextField fx:id="LoginUsernameTextField" layoutX="945.0" layoutY="371.0" prefHeight="31.0" prefWidth="243.0" />
-      <JFXPasswordField fx:id="LoginPasswordField" layoutX="945.0" layoutY="492.0" prefHeight="31.0" prefWidth="243.0" />
+      <JFXTextField fx:id="LoginUsernameTextField" layoutX="945.0" layoutY="364.0" prefHeight="38.0" prefWidth="243.0" promptText="Enter your email" />
+      <JFXPasswordField fx:id="LoginPasswordField" layoutX="945.0" layoutY="485.0" prefHeight="38.0" prefWidth="243.0" promptText="Enter your password" />
       <JFXCheckBox fx:id="RememberMeCheckbox" layoutX="945.0" layoutY="608.0" text="Remember me">
          <font>
             <Font size="13.0" />

@@ -9,6 +9,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Helper {
     public String removeDoubleCode(String string) {
         if (string.equals("null")) return "";
@@ -46,4 +49,18 @@ public class Helper {
         imageView.setFitWidth(50);
         button.setGraphic(imageView);
     }
+
+    public void setIconButton(ImageView imageView, String imagePath, int height, int width) {
+        Image image = new Image(getClass().getResourceAsStream(imagePath));
+        imageView.setImage(image);
+        imageView.setFitHeight(height);
+        imageView.setFitWidth(width);
+    }
+
+    public boolean isValidEmail(String email) {
+        Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile( "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        return matcher.find();
+    }
+
 }
