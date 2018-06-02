@@ -2,8 +2,6 @@ package editProfile;
 
 import java.io.File;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import application.Connect;
@@ -26,7 +24,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import myProfile.MyProfileController;
 
 public class EditProfileController implements Initializable{
@@ -122,7 +119,7 @@ public class EditProfileController implements Initializable{
 			Scene scene = new Scene(root);
 
 			Stage newStage = new Stage();
-			newStage.initStyle(StageStyle.UTILITY);
+			newStage.setFullScreen(true);
 			newStage.setTitle("Chat Application.");
 			newStage.setScene(scene);
 			newStage.show();

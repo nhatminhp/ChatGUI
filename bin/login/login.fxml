@@ -7,48 +7,45 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="LoginPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
    <children>
-      <Label layoutX="751.0" layoutY="374.0" text="Email">
+      <Label layoutX="741.0" layoutY="495.0" text="Email">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label layoutX="751.0" layoutY="495.0" prefHeight="24.0" prefWidth="128.0" text="Password">
+      <Label layoutX="741.0" layoutY="585.0" prefHeight="24.0" prefWidth="128.0" text="Password">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label layoutX="823.0" layoutY="202.0" text="CHAT APPLICATION" textFill="#00a1ff">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Label>
-      <Hyperlink fx:id="ForgetPassword" layoutX="1009.0" layoutY="739.0" onAction="#loadConfirmEmail" text="Forget password ?">
+      <Hyperlink fx:id="ForgetPassword" layoutX="1005.0" layoutY="832.0" onAction="#loadConfirmEmail" text="Forget password ?">
          <font>
             <Font size="13.0" />
          </font></Hyperlink>
-      <JFXTextField fx:id="LoginUsernameTextField" layoutX="945.0" layoutY="364.0" prefHeight="38.0" prefWidth="243.0" promptText="Enter your email" />
-      <JFXPasswordField fx:id="LoginPasswordField" layoutX="945.0" layoutY="485.0" prefHeight="38.0" prefWidth="243.0" promptText="Enter your password" />
-      <JFXCheckBox fx:id="RememberMeCheckbox" layoutX="945.0" layoutY="608.0" text="Remember me">
+      <JFXTextField fx:id="LoginUsernameTextField" layoutX="937.0" layoutY="488.0" prefHeight="38.0" prefWidth="251.0" promptText="Enter your email" />
+      <JFXPasswordField fx:id="LoginPasswordField" layoutX="937.0" layoutY="578.0" prefHeight="38.0" prefWidth="251.0" promptText="Enter your password" />
+      <JFXCheckBox fx:id="RememberMeCheckbox" layoutX="937.0" layoutY="687.0" text="Remember me">
          <font>
             <Font size="13.0" />
          </font></JFXCheckBox>
-      <JFXButton fx:id="LoginButton" layoutX="917.0" layoutY="658.0" onAction="#login" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #66bbe2;" text="Login">
+      <JFXButton fx:id="LoginButton" layoutX="907.0" layoutY="757.0" onAction="#login" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #66bbe2;" text="Login">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </JFXButton>
-      <Label fx:id="NoticeLabel" layoutX="751.0" layoutY="556.0" prefHeight="29.0" prefWidth="472.0" textFill="RED">
+      <Label fx:id="NoticeLabel" layoutX="751.0" layoutY="633.0" prefHeight="29.0" prefWidth="472.0" textFill="RED">
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Hyperlink fx:id="SignUp" layoutX="815.0" layoutY="739.0" onAction="#signUp" text="Sign up">
+      <Hyperlink fx:id="SignUp" layoutX="810.0" layoutY="832.0" onAction="#signUp" text="Sign up">
          <font>
             <Font size="13.0" />
          </font></Hyperlink>
-      <JFXButton fx:id="ExitButton" layoutX="1832.0" layoutY="26.0" onAction="#Exit" opacity="0.4" prefHeight="58.0" prefWidth="62.0" />
+      <JFXButton fx:id="ExitButton" layoutX="1832.0" layoutY="26.0" onAction="#Exit" prefHeight="58.0" prefWidth="62.0" />
+      <ImageView fx:id="AppImage" fitHeight="300.0" fitWidth="300.0" layoutX="824.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
    </children>
    <opaqueInsets>
       <Insets />

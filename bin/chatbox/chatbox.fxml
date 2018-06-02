@@ -13,7 +13,7 @@
 <AnchorPane fx:id="ChatPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chatbox.ChatController">
    <children>
       <ListView layoutY="286.0" prefHeight="837.0" prefWidth="353.0" />
-      <ListView prefHeight="234.0" prefWidth="353.0" />
+      <ListView prefHeight="234.0" prefWidth="353.0" style="-fx-border-color: #c3cbd8;" />
       <ImageView fx:id="MyProfileImage" fitHeight="100.0" fitWidth="100.0" layoutX="37.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="MyNameLabel" layoutX="45.0" layoutY="158.0" prefHeight="25.0" prefWidth="102.0" text="username">
          <font>
@@ -24,13 +24,8 @@
             <Font size="14.0" />
          </font></JFXButton>
       <MaterialDesignIconView fill="#1b8ff5" glyphName="ACCOUNT" layoutX="203.0" layoutY="89.0" size="25.0" text="" />
-      <Label layoutX="67.0" layoutY="246.0" prefHeight="25.0" prefWidth="75.0" text="Friend List">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <MaterialDesignIconView fill="#1b8ff5" glyphName="ACCOUNT" layoutX="32.0" layoutY="268.0" size="25.0" text="" wrappingWidth="25.000023692846298" />
-      <AnchorPane layoutX="353.0" prefHeight="1123.0" prefWidth="1567.0" style="-fx-background-color: #e2f2ff;">
+      <MaterialDesignIconView fill="#1b8ff5" glyphName="ACCOUNT" layoutX="11.0" layoutY="269.0" size="25.0" text="" wrappingWidth="25.000023692846298" />
+      <AnchorPane layoutX="353.0" prefHeight="1123.0" prefWidth="1567.0" style="-fx-background-color: #e2f2ff; -fx-border-color: #8e949e;">
          <children>
             <JFXButton fx:id="SendButton" layoutX="1332.0" layoutY="959.0" onAction="#sendMessage" prefHeight="48.0" prefWidth="75.0" style="-fx-background-color: #1b8ff5;" text="Send">
                <font>
@@ -38,9 +33,24 @@
                </font>
             </JFXButton>
             <TextArea fx:id="MessagesTextArea" layoutX="110.0" layoutY="94.0" prefHeight="818.0" prefWidth="1297.0" style="-fx-border-color: #e5e5e5; -fx-border-radius: 5;" />
-            <JFXButton fx:id="ExitButton" layoutX="1488.0" layoutY="30.0" onAction="#Exit" opacity="0.3" prefHeight="48.0" prefWidth="49.0" text="Exit" />
+            <JFXButton fx:id="ExitButton" layoutX="1488.0" layoutY="30.0" onAction="#Exit" prefHeight="48.0" prefWidth="49.0" text="Exit" />
             <JFXTextArea fx:id="TypeChatTextField" layoutX="110.0" layoutY="959.0" prefHeight="48.0" prefWidth="1139.0" />
          </children>
       </AnchorPane>
+      <JFXButton fx:id="SearchFriendButton" layoutX="115.0" layoutY="234.0" prefHeight="52.0" prefWidth="120.0" style="-fx-border-color: #c3cbd8;" text="Search Friend">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="ShowFriendRequestsButton" layoutX="235.0" layoutY="234.0" prefHeight="52.0" prefWidth="120.0" style="-fx-border-color: #c3cbd8;" text="Friend Requests">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutY="234.0" prefHeight="52.0" prefWidth="115.0" style="-fx-border-color: #c3cbd8;" text="      Friend List">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

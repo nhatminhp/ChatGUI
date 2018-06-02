@@ -1,6 +1,8 @@
 package login;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -23,14 +25,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 public class LoginController implements Initializable {
-
-    private String username, password;
 
     private Connect newConnect;
     private Json newJson;
@@ -53,6 +54,8 @@ public class LoginController implements Initializable {
     private AnchorPane LoginPane;
     @FXML
     private Label NoticeLabel;
+    @FXML
+    private ImageView AppImage;
 
     private String token;
 
@@ -82,6 +85,7 @@ public class LoginController implements Initializable {
         LoginButton.setCursor(Cursor.HAND);
         ForgetPassword.setCursor(Cursor.HAND);
         (new Helper()).setIconButton(ExitButton,"../images/exit.png");
+        (new Helper()).setIconButton(AppImage,"../images/AppIcon.png",300,300);
     }
 
     private Stage getStage() {
@@ -113,8 +117,22 @@ public class LoginController implements Initializable {
                 return;
             }
             setToken(parse.get("token"));
+            if (RememberMeCheckbox.isSelected()) {
+                rememberLogin();
+            }
             loadChatbox();
         }
+    }
+
+    private void rememberLogin() {
+        String info = LoginUsernameTextField.getText()+"\n"+LoginPasswordField.getText();
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter("info.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        out.println(info);
     }
 
 
@@ -221,11 +239,4 @@ public class LoginController implements Initializable {
         this.token = token;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

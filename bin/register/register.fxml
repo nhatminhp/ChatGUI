@@ -67,7 +67,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <JFXButton fx:id="BackButton" layoutX="51.0" layoutY="46.0" onAction="#loadBackward" prefHeight="50.0" prefWidth="50.0" text=".">
+      <JFXButton fx:id="BackButton" layoutX="24.0" layoutY="33.0" onAction="#loadBackward" prefHeight="50.0" prefWidth="50.0" text=".">
          <font>
             <Font size="16.0" />
          </font>
@@ -97,6 +97,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="ExitButton" layoutX="1837.0" layoutY="33.0" opacity="0.4" prefHeight="50.0" prefWidth="50.0" text="." />
+      <JFXButton fx:id="ExitButton" layoutX="1846.0" layoutY="33.0" opacity="0.4" prefHeight="50.0" prefWidth="50.0" text="." />
    </children>
 </AnchorPane>

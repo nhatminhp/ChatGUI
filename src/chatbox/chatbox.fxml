@@ -33,7 +33,7 @@
                </font>
             </JFXButton>
             <TextArea fx:id="MessagesTextArea" layoutX="110.0" layoutY="94.0" prefHeight="818.0" prefWidth="1297.0" style="-fx-border-color: #e5e5e5; -fx-border-radius: 5;" />
-            <JFXButton fx:id="ExitButton" layoutX="1488.0" layoutY="30.0" onAction="#Exit" opacity="0.3" prefHeight="48.0" prefWidth="49.0" text="Exit" />
+            <JFXButton fx:id="ExitButton" layoutX="1488.0" layoutY="30.0" onAction="#Exit" prefHeight="48.0" prefWidth="49.0" text="Exit" />
             <JFXTextArea fx:id="TypeChatTextField" layoutX="110.0" layoutY="959.0" prefHeight="48.0" prefWidth="1139.0" />
          </children>
       </AnchorPane>
