@@ -47,7 +47,7 @@
             <Font size="13.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutY="234.0" prefHeight="52.0" prefWidth="115.0" style="-fx-border-color: #c3cbd8;" text="      Friend List">
+      <JFXButton layoutY="234.0" prefHeight="52.0" prefWidth="115.0" style="-fx-border-color: #c3cbd8;" text="      Chat List">
          <font>
             <Font size="13.0" />
          </font>

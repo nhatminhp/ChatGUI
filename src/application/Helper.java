@@ -18,7 +18,7 @@ public class Helper {
         return string.replace("\"", "");
     }
 
-    public void closeRequest(Stage stage){
+    private void closeRequest(Stage stage){
 
         String msg = "Do you really want to quit ?";
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

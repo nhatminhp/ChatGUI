@@ -23,15 +23,15 @@
          </font></Label>
       <Hyperlink fx:id="ForgetPassword" layoutX="1005.0" layoutY="832.0" onAction="#loadConfirmEmail" text="Forget password ?">
          <font>
-            <Font size="13.0" />
+            <Font size="14.0" />
          </font></Hyperlink>
-      <JFXTextField fx:id="LoginUsernameTextField" layoutX="937.0" layoutY="488.0" prefHeight="38.0" prefWidth="251.0" promptText="Enter your email" />
-      <JFXPasswordField fx:id="LoginPasswordField" layoutX="937.0" layoutY="578.0" prefHeight="38.0" prefWidth="251.0" promptText="Enter your password" />
+      <JFXTextField fx:id="LoginUsernameTextField" layoutX="937.0" layoutY="488.0" prefHeight="38.0" prefWidth="277.0" promptText="Enter your email" />
+      <JFXPasswordField fx:id="LoginPasswordField" layoutX="937.0" layoutY="578.0" prefHeight="38.0" prefWidth="277.0" promptText="Enter your password" />
       <JFXCheckBox fx:id="RememberMeCheckbox" layoutX="937.0" layoutY="687.0" text="Remember me">
          <font>
             <Font size="13.0" />
          </font></JFXCheckBox>
-      <JFXButton fx:id="LoginButton" layoutX="907.0" layoutY="757.0" onAction="#login" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #66bbe2;" text="Login">
+      <JFXButton fx:id="LoginButton" layoutX="917.0" layoutY="757.0" onAction="#login" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #66bbe2;" text="Login">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -42,10 +42,10 @@
          </font></Label>
       <Hyperlink fx:id="SignUp" layoutX="810.0" layoutY="832.0" onAction="#signUp" text="Sign up">
          <font>
-            <Font size="13.0" />
+            <Font size="14.0" />
          </font></Hyperlink>
-      <JFXButton fx:id="ExitButton" layoutX="1832.0" layoutY="26.0" onAction="#Exit" prefHeight="58.0" prefWidth="62.0" />
-      <ImageView fx:id="AppImage" fitHeight="300.0" fitWidth="300.0" layoutX="824.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton fx:id="ExitButton" layoutX="1833.0" layoutY="27.0" onAction="#Exit" prefHeight="58.0" prefWidth="62.0" />
+      <ImageView fx:id="AppImage" fitHeight="300.0" fitWidth="300.0" layoutX="810.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
    </children>
    <opaqueInsets>
       <Insets />

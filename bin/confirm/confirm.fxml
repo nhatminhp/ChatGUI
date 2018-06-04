@@ -38,7 +38,7 @@
             <Font size="13.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="ExitButton" layoutX="1830.0" layoutY="37.0" onAction="#Exit" opacity="0.4" prefHeight="50.0" prefWidth="50.0" text="." />
+      <JFXButton fx:id="ExitButton" layoutX="1830.0" layoutY="37.0" onAction="#Exit" prefHeight="50.0" prefWidth="50.0" text="." />
       <Label layoutX="885.0" layoutY="427.0" prefHeight="25.0" prefWidth="151.0" text="Enter new password:">
          <font>
             <Font size="16.0" />

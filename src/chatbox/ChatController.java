@@ -1,9 +1,12 @@
 package chatbox;
 
 import application.Connect;
+import application.Friend;
+import application.FriendList;
 import application.Helper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
@@ -57,6 +60,8 @@ public class ChatController implements Initializable {
 
     private JsonNode friendListJson;
 
+    private JsonNode chatListJson;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -83,13 +88,45 @@ public class ChatController implements Initializable {
 
     public void initialize() throws IOException {
         Helper helper = new Helper();
-        System.out.println(callFriendListAPI());
+        String returnedJson1 = callFriendListAPI();
+        ObjectMapper mapper1 = new ObjectMapper();
+        friendListJson = mapper1.readTree(returnedJson1);
+        ArrayNode arrayNode1 = (ArrayNode) friendListJson.get("friend_list");
+        for (JsonNode jsonNode: arrayNode1
+             ) {
+            System.out.println(jsonNode);
+            addToFriendList(jsonNode);
+        }
 
-        String returnedJson = callAPI();
-        ObjectMapper mapper = new ObjectMapper();
-        profileJson  = mapper.readTree(returnedJson);
+        String returnedJson2 = callAPI();
+        ObjectMapper mapper2 = new ObjectMapper();
+        profileJson  = mapper2.readTree(returnedJson2);
 
         MyNameLabel.setText(helper.removeDoubleCode(profileJson.get("user_name").toString()));
+
+        String returnedJson3 = callChatListAPI();
+        ObjectMapper mapper3 = new ObjectMapper();
+        chatListJson = mapper3.readTree(returnedJson3);
+        System.out.println(chatListJson);
+//        ArrayNode arrayNode2 = (ArrayNode) friendListJson.get("friend_list");
+//        for (JsonNode jsonNode: arrayNode2
+//                ) {
+//            System.out.println(jsonNode);
+//
+//        }
+    }
+
+    private void addToFriendList(JsonNode jsonNode) {
+        Friend friend = new Friend();
+        friend.setUserID(jsonNode.get("userID").toString());
+        friend.setUsername(jsonNode.get("user_name").toString());
+        friend.setEmail(jsonNode.get("email").toString());
+        friend.setPhoneNumber(jsonNode.get("phone_number").toString());
+        friend.setDOB(jsonNode.get("DOB").toString());
+        friend.setProfileImage(jsonNode.get("profile_picture").toString());
+        friend.setFavorite(jsonNode.get("user_name").asBoolean());
+
+        FriendList.addFriendObject(friend);
     }
 
     @FXML
@@ -143,6 +180,13 @@ public class ChatController implements Initializable {
         Connect connect = new Connect();
         connect.addArgument("token", getToken());
         connect.setURL("http://localhost:8080/get-friend-list");
+        return connect.connect();
+    }
+
+    private String callChatListAPI() throws IOException {
+        Connect connect = new Connect();
+        connect.addArgument("token", getToken());
+        connect.setURL("http://localhost:8080/get-chat-room-list");
         return connect.connect();
     }
 

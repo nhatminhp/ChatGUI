@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class FriendList {
 
-    public static ArrayList<Friend> Contacts;
+    public static ArrayList<Friend> Contacts = new ArrayList<Friend>();
 
     public static void init() {
         Contacts = new ArrayList<Friend>();
@@ -18,7 +18,7 @@ public class FriendList {
         Contacts.remove(friend);
     }
 
-    public static void removeAllFriendObject() {
+    public static void removeAllFriendObjects() {
         Contacts.clear();
     }
 }

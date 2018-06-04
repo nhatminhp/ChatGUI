@@ -97,6 +97,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="ExitButton" layoutX="1846.0" layoutY="33.0" opacity="0.4" prefHeight="50.0" prefWidth="50.0" text="." />
+      <JFXButton fx:id="ExitButton" layoutX="1846.0" layoutY="33.0" prefHeight="50.0" prefWidth="50.0" text="." />
    </children>
 </AnchorPane>

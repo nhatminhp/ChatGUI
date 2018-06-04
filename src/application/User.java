@@ -4,23 +4,16 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
+    private int userID;
     private String username;
     private String email;
     private String password;
     private String DOB;
     private String phoneNumber;
 
-    public User(String username, String password) {
+    public User(int userID, String username) {
         this.username = username;
-        this.password = password;
-    }
-
-    public User(String username, String password, String email, String phoneNumber, String DOB) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.DOB = DOB;
+        this.userID = userID;
     }
 
     public String getUsername() {
@@ -63,4 +56,11 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 }
