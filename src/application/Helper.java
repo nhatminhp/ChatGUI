@@ -13,6 +13,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Helper {
+
+    private static String socketMessage;
+
     public String removeDoubleCode(String string) {
         if (string.equals("null")) return "";
         return string.replace("\"", "");
@@ -61,6 +64,20 @@ public class Helper {
         Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile( "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
         return matcher.find();
+    }
+
+    public String removeBracket(String string) {
+        string = string.replace("[","");
+        string = string.replace("]","");
+        return string;
+    }
+
+    public static String getSocketMessage() {
+        return socketMessage;
+    }
+
+    public static void setSocketMessage(String socketMessage) {
+        Helper.socketMessage = socketMessage;
     }
 
 }

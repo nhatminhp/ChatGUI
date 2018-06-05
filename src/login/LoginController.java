@@ -184,7 +184,7 @@ public class LoginController implements Initializable {
     }
 
 
-    private void loadChatbox() {
+    private void loadChatbox(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../chatbox/chatbox.fxml"));
             Parent root = loader.load();

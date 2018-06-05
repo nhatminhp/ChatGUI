@@ -17,4 +17,15 @@ public class ChatRoomList {
     public static void removeAllChatRoomObjects() {
         chatRoomList.clear();
     }
+
+    public ChatRoom searchRoom(String roomName) {
+        for (ChatRoom chatRoom:
+                chatRoomList) {
+            if (chatRoom.getRoomName().equals(roomName)) {
+                return chatRoom;
+            }
+        }
+        return null;
+    }
+
 }

@@ -1,9 +1,6 @@
 package chatbox;
 
-import application.Connect;
-import application.Friend;
-import application.FriendList;
-import application.Helper;
+import application.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -14,18 +11,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.TextArea;
 import myProfile.MyProfileController;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,6 +40,10 @@ public class ChatController implements Initializable {
     @FXML
     private JFXButton ExitButton;
     @FXML
+    private JFXButton ShowFriendRequestsButton;
+    @FXML
+    private JFXButton SearchFriendButton;
+    @FXML
     private JFXTextArea TypeChatTextField;
     @FXML
     private Label MyNameLabel;
@@ -48,7 +54,11 @@ public class ChatController implements Initializable {
     @FXML
     private AnchorPane MessagePane;
     @FXML
+    private ListView MainListView;
+    @FXML
     private TextArea MessagesTextArea;
+    @FXML
+    private VBox ListVBox;
 
     private String token;
 
@@ -61,6 +71,10 @@ public class ChatController implements Initializable {
     private JsonNode friendListJson;
 
     private JsonNode chatListJson;
+
+    private int currentRoomID;
+
+    private WebsocketConnection socketConnect;
 
 
     @Override
@@ -86,7 +100,14 @@ public class ChatController implements Initializable {
         helper.setIconButton(MyProfileImage,"../images/profile.png",100,100);
     }
 
-    public void initialize() throws IOException {
+    public void initialize() throws IOException{
+        try {
+            socketConnect = new WebsocketConnection(new URI( "ws://localhost:8080/websocket?token=" + getToken()));
+            socketConnect.connect();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
         Helper helper = new Helper();
         String returnedJson1 = callFriendListAPI();
         ObjectMapper mapper1 = new ObjectMapper();
@@ -94,26 +115,63 @@ public class ChatController implements Initializable {
         ArrayNode arrayNode1 = (ArrayNode) friendListJson.get("friend_list");
         for (JsonNode jsonNode: arrayNode1
              ) {
-            System.out.println(jsonNode);
             addToFriendList(jsonNode);
         }
 
         String returnedJson2 = callAPI();
         ObjectMapper mapper2 = new ObjectMapper();
         profileJson  = mapper2.readTree(returnedJson2);
-
         MyNameLabel.setText(helper.removeDoubleCode(profileJson.get("user_name").toString()));
 
         String returnedJson3 = callChatListAPI();
         ObjectMapper mapper3 = new ObjectMapper();
         chatListJson = mapper3.readTree(returnedJson3);
-        System.out.println(chatListJson);
-//        ArrayNode arrayNode2 = (ArrayNode) friendListJson.get("friend_list");
-//        for (JsonNode jsonNode: arrayNode2
-//                ) {
-//            System.out.println(jsonNode);
-//
-//        }
+        ArrayNode arrayNode2 = (ArrayNode) chatListJson.get("room_list");
+        Helper helper1 = new Helper();
+
+
+        for (JsonNode jsonNode: arrayNode2
+                ) {
+            ChatRoom chatRoom = new ChatRoom(jsonNode.get("roomID").asInt());
+            chatRoom.setLastMessage(jsonNode.get("last_message").toString());
+            chatRoom.setSendingTime(jsonNode.get("sending_time").toString());
+            chatRoom.setUnreadMessages(jsonNode.get("unread_message").asInt());
+            ArrayNode userNodes = (ArrayNode) jsonNode.get("user_list");
+            String roomName = "";
+            for (JsonNode userNode: userNodes
+                 ) {
+                roomName = roomName + helper.removeDoubleCode(userNode.get("user_name").toString()) + ", ";
+                User user = new User(userNode.get("userID").asInt(), userNode.get("user_name").toString());
+                chatRoom.addUserObject(user);
+            }
+            roomName = roomName.substring(0, roomName.length() - 2);
+            chatRoom.setRoomName(roomName);
+            System.out.println(chatRoom.getRoomID() + "," + chatRoom.getRoomName());
+            MainListView.getItems().add(roomName);
+            ChatRoomList.addAChatRoomObject(chatRoom);
+        }
+
+        handleItemClicked();
+
+        ListVBox.getChildren().addAll(MainListView);
+    }
+
+    private void handleItemClicked() {
+        MainListView.setOnMouseClicked(event ->
+        {
+            //
+            String item = MainListView.getSelectionModel().getSelectedItems().toString();
+            ChatRoom clickedChatRoom = (new ChatRoomList()).searchRoom((new Helper()).removeBracket(item));
+            setCurrentRoomID(clickedChatRoom.getRoomID());
+            System.out.println(clickedChatRoom.getRoomID());
+        });
+    }
+
+    @FXML
+    private void sendMessage(ActionEvent event) throws URISyntaxException {
+        String message = "{\"roomID\":"+ this.getCurrentRoomID() + ",\"message\":\"" + TypeChatTextField.getText() + "\"}";
+        socketConnect.send(message);
+        TypeChatTextField.setText("");
     }
 
     private void addToFriendList(JsonNode jsonNode) {
@@ -138,7 +196,7 @@ public class ChatController implements Initializable {
     private void clickToMyProfileButton(ActionEvent event) throws IOException {
         String returnedJson = callAPI();
         ObjectMapper mapper = new ObjectMapper();
-        newJson  = mapper.readTree(returnedJson);                 //return data
+        newJson  = mapper.readTree(returnedJson);
         System.out.println(newJson);
         if (newJson.get("success").asBoolean() && newJson.get("verify_token").asBoolean()) {
             loadMyProfile(newJson);
@@ -198,10 +256,6 @@ public class ChatController implements Initializable {
         this.token = token;
     }
 
-    @FXML
-    private void sendMessage(ActionEvent event) {
-        // CODE
-    }
 
     private Stage getStage() {
         return (Stage) ChatPane.getScene().getWindow();
@@ -212,5 +266,13 @@ public class ChatController implements Initializable {
         if (event.getCode() == KeyCode.ENTER)  {
             clickToMyProfileButton(new ActionEvent());
         }
+    }
+
+    public int getCurrentRoomID() {
+        return currentRoomID;
+    }
+
+    public void setCurrentRoomID(int currentRoomID) {
+        this.currentRoomID = currentRoomID;
     }
 }

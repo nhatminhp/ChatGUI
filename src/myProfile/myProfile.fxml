@@ -61,11 +61,11 @@
             <JFXButton fx:id="ChangePasswordButton" layoutX="303.0" layoutY="223.0" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #ffac3f;" text="Change" />
             </children>
         </AnchorPane>
-        <JFXButton fx:id="BackButton" layoutX="21.0" layoutY="35.0" onAction="#clickBackButton" prefHeight="50.0" prefWidth="50.0" text=".">
+        <JFXButton fx:id="BackButton" layoutX="14.0" layoutY="24.0" onAction="#clickBackButton" prefHeight="50.0" prefWidth="50.0" text=".">
             <font>
                 <Font size="13.0" />
             </font>
         </JFXButton>
-      <JFXButton fx:id="ExitButton" layoutX="1848.0" layoutY="35.0" onAction="#Exit" prefHeight="50.0" prefWidth="50.0" text="." />
+      <JFXButton fx:id="ExitButton" layoutX="1847.0" layoutY="24.0" onAction="#Exit" prefHeight="50.0" prefWidth="50.0" text="." />
     </children>
 </AnchorPane>

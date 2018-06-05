@@ -12,6 +12,8 @@ public class ChatRoom {
 
     private int unreadMessages;
 
+    private String roomName;
+
     private ArrayList<User> UserList = new ArrayList<User>();
 
     public ChatRoom(int roomID) {
@@ -60,5 +62,13 @@ public class ChatRoom {
 
     public void setUnreadMessages(int unreadMessages) {
         this.unreadMessages = unreadMessages;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 }

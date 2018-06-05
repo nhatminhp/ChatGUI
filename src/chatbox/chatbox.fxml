@@ -8,11 +8,12 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="ChatPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chatbox.ChatController">
    <children>
-      <ListView layoutY="286.0" prefHeight="837.0" prefWidth="353.0" />
+      <ListView fx:id="MainListView" layoutY="286.0" prefHeight="837.0" prefWidth="353.0" />
       <ListView prefHeight="234.0" prefWidth="353.0" style="-fx-border-color: #c3cbd8;" />
       <ImageView fx:id="MyProfileImage" fitHeight="100.0" fitWidth="100.0" layoutX="37.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="MyNameLabel" layoutX="45.0" layoutY="158.0" prefHeight="25.0" prefWidth="102.0" text="username">
@@ -52,5 +53,7 @@
             <Font size="13.0" />
          </font>
       </JFXButton>
+      <VBox fx:id="ListVBox" layoutY="286.0" prefHeight="837.0" prefWidth="353.0" spacing="10.0">
+      </VBox>
    </children>
 </AnchorPane>
