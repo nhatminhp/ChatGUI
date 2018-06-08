@@ -97,12 +97,12 @@ public class ChatController implements Initializable {
 
         Helper helper = new Helper();
         helper.setIconButton(ExitButton,"../images/exit.png");
-        helper.setIconButton(MyProfileImage,"../images/profile.png",100,100);
+
     }
 
     public void initialize() throws IOException{
         try {
-            socketConnect = new WebsocketConnection(new URI( "ws://localhost:8080/websocket?token=" + getToken()));
+            socketConnect = new WebsocketConnection(new URI( "ws://gossip-ict.tk/websocket?token=" + getToken()));
             socketConnect.connect();
         } catch (URISyntaxException e) {
             e.printStackTrace();
@@ -122,6 +122,7 @@ public class ChatController implements Initializable {
         ObjectMapper mapper2 = new ObjectMapper();
         profileJson  = mapper2.readTree(returnedJson2);
         MyNameLabel.setText(helper.removeDoubleCode(profileJson.get("user_name").toString()));
+        helper.setIconButton(MyProfileImage,"http://gossip-ict.tk/image/profile/"+profileJson.get("userID"),100,100);
 
         String returnedJson3 = callChatListAPI();
         ObjectMapper mapper3 = new ObjectMapper();
@@ -230,21 +231,21 @@ public class ChatController implements Initializable {
 
     private String callAPI () throws IOException {
         newConnect.addArgument("token", getToken());
-        newConnect.setURL("http://localhost:8080/get-my-profile");
+        newConnect.setURL("http://gossip-ict.tk/get-my-profile");
         return newConnect.connect();
     }
 
     private String callFriendListAPI() throws IOException {
         Connect connect = new Connect();
         connect.addArgument("token", getToken());
-        connect.setURL("http://localhost:8080/get-friend-list");
+        connect.setURL("http://gossip-ict.tk/get-friend-list");
         return connect.connect();
     }
 
     private String callChatListAPI() throws IOException {
         Connect connect = new Connect();
         connect.addArgument("token", getToken());
-        connect.setURL("http://localhost:8080/get-chat-room-list");
+        connect.setURL("http://gossip-ict.tk/get-chat-room-list");
         return connect.connect();
     }
 

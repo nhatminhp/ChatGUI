@@ -139,7 +139,7 @@ public class LoginController implements Initializable {
     private String callAPI () throws IOException {
         newConnect.addArgument("email", LoginUsernameTextField.getText());
         newConnect.addArgument("password", LoginPasswordField.getText());
-        newConnect.setURL("http://localhost:8080/login");
+        newConnect.setURL("http://gossip-ict.tk/login");
         return newConnect.connect();
     }
 

@@ -67,7 +67,7 @@ public class WebsocketConnection extends WebSocketClient {
     }
 
     public static void connects(String token) throws URISyntaxException {
-        WebsocketConnection c = new WebsocketConnection( new URI( "ws://localhost:8080/websocket?token=" + token)); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
+        WebsocketConnection c = new WebsocketConnection( new URI( "ws://gossip-ict.tk/websocket?token=" + token)); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
         c.connect();
     }
 

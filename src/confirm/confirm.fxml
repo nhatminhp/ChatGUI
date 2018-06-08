@@ -44,7 +44,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <JFXPasswordField layoutX="862.0" layoutY="471.0" prefHeight="25.0" prefWidth="196.0" promptText="enter password">
+      <JFXPasswordField fx:id="NewPasswordField" layoutX="862.0" layoutY="471.0" prefHeight="25.0" prefWidth="196.0" promptText="enter password">
          <font>
             <Font size="14.0" />
          </font>
@@ -59,7 +59,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <JFXPasswordField layoutX="863.0" layoutY="610.0" prefHeight="25.0" prefWidth="196.0" promptText="re-enter your password">
+      <JFXPasswordField fx:id="NewConfirmPasswordField" layoutX="863.0" layoutY="610.0" prefHeight="25.0" prefWidth="196.0" promptText="re-enter your password">
          <font>
             <Font size="14.0" />
          </font>

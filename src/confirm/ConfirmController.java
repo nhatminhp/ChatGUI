@@ -4,6 +4,7 @@ import application.Connect;
 import application.Helper;
 import application.Json;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +36,10 @@ public class ConfirmController implements Initializable {
     @FXML
     private JFXTextField ConfirmCodeField;
     @FXML
+    private JFXPasswordField NewPasswordField;
+    @FXML
+    private JFXPasswordField NewConfirmPasswordField;
+    @FXML
     private Label NoticeCodeError;
     @FXML
     private Label ConfirmCodeError;
@@ -47,6 +52,7 @@ public class ConfirmController implements Initializable {
 
     private Connect newConnect;
     private Json newJson;
+    private Json changePasswordJson;
 
     private String email;
 
@@ -59,6 +65,7 @@ public class ConfirmController implements Initializable {
             e.printStackTrace();
         }
         newJson = new Json();
+        changePasswordJson = new Json();
 
         ConfirmCodeField.setOnKeyPressed(event -> {
             try {
@@ -88,21 +95,41 @@ public class ConfirmController implements Initializable {
     }
 
     private void onFailed() {
-        NoticeCodeError.setText("Wrong confirmation code");
+        ConfirmCodeError.setText("Wrong confirmation code");
     }
 
     @FXML
     private void clickConfirmCodeButton(ActionEvent event) throws IOException {
         NoticeCodeError.setText("");
-        if (!fieldFilled(ConfirmCodeField)) {
-            NoticeCodeError.setText("You need to enter the code first !");
+        ConfirmCodeError.setText("");
+        PasswordError.setText("");
+        ConfirmPasswordError.setText("");
+        ConfirmPasswordError.setText("");
+        if (!fieldFilled(ConfirmCodeField) || !fieldPasswordFilled(NewPasswordField) || !fieldPasswordFilled(NewConfirmPasswordField)) {
+            NoticeCodeError.setText("You need to fill all Fields");
         } else {
-            String returnedJson = callAPI();
+            String returnedJson = callConfirmAPI();
             newJson.setjson(returnedJson);
             Map<String, String> parse = newJson.getjson();
             newJson.listJson(parse);
             if (parse.get("success").equals("false")) {
                 onFailed();
+                return;
+            }
+            returnedJson = callChagePasswordAPI();
+            changePasswordJson.setjson(returnedJson);
+            parse = changePasswordJson.getjson();
+            if (parse.get("success").equals("false")) {
+                String error = parse.get("error_message");
+                if (error.contains("Internal Server Error")) {
+                    NoticeCodeError.setText("Internal Server Error");
+                }
+                if (error.contains("Password must contain at")) {
+                    PasswordError.setText("Password must contain at least eight characters, at least \none number and both lower and uppercase letters and special characters");
+                }
+                if (error.contains("Confirm password does not match")) {
+                    ConfirmPasswordError.setText("Confirm password does not match");
+                }
                 return;
             }
             loadLogin();
@@ -112,7 +139,8 @@ public class ConfirmController implements Initializable {
     private void loadLogin() {
         System.out.println("Confirm Button pressed");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../login/login.fxml"));
+            Parent root = loader.load();
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
@@ -131,11 +159,19 @@ public class ConfirmController implements Initializable {
         this.email = email;
     }
 
-    private String callAPI() throws IOException {
+    private String callConfirmAPI() throws IOException {
         newConnect.addArgument("email", this.email);
-        System.out.println(email);
         newConnect.addArgument("confirmation_code", ConfirmCodeField.getText());
-        newConnect.setURL("http://localhost:8080/check-confirmation-code");
+        newConnect.setURL("http://gossip-ict.tk/check-confirmation-code");
+        return newConnect.connect();
+    }
+
+    private String callChagePasswordAPI() throws IOException {
+        newConnect.addArgument("email", this.email);
+        newConnect.addArgument("confirmation_code", ConfirmCodeField.getText());
+        newConnect.addArgument("password", NewPasswordField.getText());
+        newConnect.addArgument("confirm_password", NewConfirmPasswordField.getText());
+        newConnect.setURL("http://gossip-ict.tk/get-new-password");
         return newConnect.connect();
     }
 
@@ -160,6 +196,10 @@ public class ConfirmController implements Initializable {
 
     private boolean fieldFilled(JFXTextField textField) {
         return (textField.getText() != null && !textField.getText().trim().isEmpty());
+    }
+
+    private boolean fieldPasswordFilled(JFXPasswordField passwordField) {
+        return (passwordField.getText() != null && !passwordField.getText().trim().isEmpty());
     }
 
     @FXML
