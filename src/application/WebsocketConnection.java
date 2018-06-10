@@ -32,7 +32,6 @@ public class WebsocketConnection extends WebSocketClient {
     @Override
     public void onOpen( ServerHandshake handshakedata ) {
         System.out.println( "opened connection" );
-        // if you plan to refuse connection based on ip or httpfields overload: onWebsocketHandshakeReceivedAsClient
     }
 
     /*message: {
@@ -69,14 +68,12 @@ public class WebsocketConnection extends WebSocketClient {
 
     @Override
     public void onClose( int code, String reason, boolean remote ) {
-        // The codecodes are documented in class org.java_websocket.framing.CloseFrame
         System.out.println( "Connection closed by " + ( remote ? "remote peer" : "us" ) + " Code: " + code + " Reason: " + reason );
     }
 
     @Override
     public void onError( Exception ex ) {
         ex.printStackTrace();
-        // if the error is fatal then onClose will be called additionally
     }
 
     /*
@@ -90,7 +87,7 @@ public class WebsocketConnection extends WebSocketClient {
     }
 
     public static void connects(String token) throws URISyntaxException {
-        WebsocketConnection c = new WebsocketConnection( new URI( "ws://localhost:8080/websocket?token=" + token)); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
+        WebsocketConnection c = new WebsocketConnection( new URI( "ws://202.182.118.224:8080/ws?token=" + token));
         c.connect();
     }
 

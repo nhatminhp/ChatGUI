@@ -75,16 +75,6 @@ public class MessageCell extends ListCell<Message> {
                 setText(null);
                 setGraphic(hbox);
 
-                System.out.println("hahahahaah");
-//            }
-
-//            setText(message.getMsg());
-//
-//            Image i = new Image(getClass().getResourceAsStream("../images/profile.png"));
-//            ImageView ii = new ImageView(i);
-//            ii.setFitWidth(50);
-//            ii.setFitHeight(50);
-//            setGraphic(ii);
 
         }
 

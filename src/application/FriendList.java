@@ -1,13 +1,16 @@
 package application;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 public class FriendList {
 
-    public static ArrayList<Friend> Contacts = new ArrayList<Friend>();
+    private static ObservableList<Friend> Contacts = FXCollections.observableArrayList();
 
     public static void init() {
-        Contacts = new ArrayList<Friend>();
+        Contacts = FXCollections.observableArrayList();
     }
 
     public static void addFriendObject(Friend friend) {
@@ -20,6 +23,11 @@ public class FriendList {
 
     public static void removeAllFriendObjects() {
         Contacts.clear();
+    }
+
+    public static ObservableList<Friend> getContacts()
+    {
+        return Contacts;
     }
 }
  

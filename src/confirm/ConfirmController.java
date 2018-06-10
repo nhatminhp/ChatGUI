@@ -162,7 +162,7 @@ public class ConfirmController implements Initializable {
     private String callConfirmAPI() throws IOException {
         newConnect.addArgument("email", this.email);
         newConnect.addArgument("confirmation_code", ConfirmCodeField.getText());
-        newConnect.setURL("http://localhost:8080/check-confirmation-code");
+        newConnect.setURL("http://gossip-ict.tk:8080/check-confirmation-code");
         return newConnect.connect();
     }
 
@@ -171,7 +171,7 @@ public class ConfirmController implements Initializable {
         newConnect.addArgument("confirmation_code", ConfirmCodeField.getText());
         newConnect.addArgument("password", NewPasswordField.getText());
         newConnect.addArgument("confirm_password", NewConfirmPasswordField.getText());
-        newConnect.setURL("http://localhost:8080/get-new-password");
+        newConnect.setURL("http://gossip-ict.tk:8080/get-new-password");
         return newConnect.connect();
     }
 

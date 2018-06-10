@@ -139,7 +139,7 @@ public class LoginController implements Initializable {
     private String callAPI () throws IOException {
         newConnect.addArgument("email", LoginUsernameTextField.getText());
         newConnect.addArgument("password", LoginPasswordField.getText());
-        newConnect.setURL("http://localhost:8080/login");
+        newConnect.setURL("http://gossip-ict.tk:8080/login");
         return newConnect.connect();
     }
 
@@ -198,7 +198,7 @@ public class LoginController implements Initializable {
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.setFullScreen(false);
+            newStage.setFullScreen(true);
             newStage.setTitle("Chat Application");
             newStage.setScene(scene);
             newStage.show();

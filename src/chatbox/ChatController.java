@@ -39,12 +39,14 @@ import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
 
+    @FXML private JFXButton ChatListButton;
+
     @FXML
     private JFXButton ToMyProfileButton;
     @FXML
     private JFXButton SendButton;
     @FXML
-    private JFXButton ExitButton;
+    private JFXButton CloseButton;
     @FXML
     private JFXButton ShowFriendRequestsButton;
     @FXML
@@ -60,15 +62,12 @@ public class ChatController implements Initializable {
 
     @FXML
     private Pane MessagePane;
-    @FXML
-    private ListView<ChatRoom> MainListView;
 
     @FXML
     private VBox ListVBox;
 
-    @FXML private AnchorPane messageAnchorPane;
-
-    @FXML private Button newButton;
+    @FXML
+    public AnchorPane messageAnchorPane;
 
     @FXML Hyperlink loadOldMessagesLink;
 
@@ -92,12 +91,19 @@ public class ChatController implements Initializable {
 
     private WebsocketConnection socketConnect;
 
-    private MessagePaneController messagePaneController;
+    public MessagePaneController messagePaneController;
 
 
+    FXMLLoader chatRoomLoader, searchFriendsLoader;
+    ObservableList<ChatRoom> listChatRoom;
+
+    int currentMenu;
     ///////////////
     ObservableList<Message> list;
     int currentMessageOrder;
+
+    Pane searchFriendsPane;
+    Pane chatRoomPane;
 
 
     @Override
@@ -119,9 +125,12 @@ public class ChatController implements Initializable {
         }
 
         Helper helper = new Helper();
-        helper.setIconButton(ExitButton,"../images/exit.png");
+        helper.setIconButton(CloseButton,"../images/exit.png");
 
         handleLoadOldMessage();
+        handleChatListButton();
+        handleSearchFriendButton();
+
     }
 
     public void loadMessagePane()
@@ -140,7 +149,7 @@ public class ChatController implements Initializable {
 
     public void initialize() throws IOException{
         try {
-            socketConnect = new WebsocketConnection(new URI( "ws://localhost:8080/websocket?token=" + getToken()));
+            socketConnect = new WebsocketConnection(new URI( "ws://202.182.118.224:8080/ws?token=" + getToken()));
             socketConnect.connect();
         } catch (URISyntaxException e) {
             e.printStackTrace();
@@ -151,8 +160,7 @@ public class ChatController implements Initializable {
         ObjectMapper mapper1 = new ObjectMapper();
         friendListJson = mapper1.readTree(returnedJson1);
         ArrayNode arrayNode1 = (ArrayNode) friendListJson.get("friend_list");
-        for (JsonNode jsonNode: arrayNode1
-             ) {
+        for (JsonNode jsonNode: arrayNode1) {
             addToFriendList(jsonNode);
         }
 
@@ -161,7 +169,7 @@ public class ChatController implements Initializable {
         profileJson  = mapper2.readTree(returnedJson2);
         MyNameLabel.setText(helper.removeDoubleCode(profileJson.get("user_name").toString()));
         setCurrentUserID(profileJson.get("userID").asInt());
-//        helper.setIconButton(MyProfileImage,"http://localhost:8080/image/profile/"+profileJson.get("userID"),100,100);
+//        helper.setIconButton(MyProfileImage,"gossip-ict.tk:8080"+profileJson.get("profile_picture"),100,100);
 
         String returnedJson3 = callChatListAPI();
         ObjectMapper mapper3 = new ObjectMapper();
@@ -170,7 +178,7 @@ public class ChatController implements Initializable {
         Helper helper1 = new Helper();
 
 
-        ObservableList<ChatRoom> listChatRoom = FXCollections.observableArrayList();
+        listChatRoom = FXCollections.observableArrayList();
         for (JsonNode jsonNode: arrayNode2) {
             ChatRoom chatRoom = new ChatRoom(jsonNode.get("roomID").asInt());
             chatRoom.setLastMessage(jsonNode.get("last_message").toString());
@@ -193,92 +201,13 @@ public class ChatController implements Initializable {
             ChatRoomList.addAChatRoomObject(chatRoom);
         }
 
-        MainListView.setCellFactory(new Callback<ListView<ChatRoom>, ListCell<ChatRoom>>(){
-
-            @Override
-            public ListCell<ChatRoom> call(ListView<ChatRoom> p) {
-
-                ListCell<ChatRoom> cell = new ListCell<ChatRoom>(){
-
-                    @Override
-                    protected void updateItem(ChatRoom t, boolean bln) {
-                        super.updateItem(t, bln);
-                        if (t != null) {
-
-                            Label l = new Label(t.getRoomName());
-                            l.setId("labelCell" + t.getRoomID());
-
-//                            l.setOnMouseClicked(e -> {
-//
-//                                l.getStyleClass().remove("boldLabel");
-//                            });
-
-                            System.out.println("Room : "+t.getRoomID() + "unread " + t.getUnreadMessages() );
-                            if(t.getUnreadMessages() > 0)
-                            {
-                                l.getStyleClass().add("boldLabel");
-                            }
-
-                            setGraphic(l);
-                        }
-                    }
-                };
-
-                cell.setOnMouseClicked(e -> {
-                    Label l = (Label) cell.getScene().lookup("#labelCell" + cell.getItem().getRoomID());
-                    l.getStyleClass().remove("boldLabel");
-                });
-
-                return cell;
-            }
-        });
-
-        MainListView.setItems(listChatRoom);
-
-        handleItemClicked();
-
-        ListVBox.getChildren().addAll(MainListView);
-
-        handleNewButton();
-    }
-
-    private void handleItemClicked() {
-
-        MainListView.getSelectionModel().setSelectionMode(
-                SelectionMode.SINGLE
-        );
-
-        MainListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener.Change<? extends ChatRoom> c) -> {
-            int numberSelections = c.getList().toArray().length;
-
-//            System.out.println("select : "+numberSelections);
-            if(numberSelections == 0)
-            {
-                messageAnchorPane.setVisible(false);
-                setCurrentRoomID(0);
-                setCurrentMessageNumber(0);
-                messagePaneController = null;
-            }
-            else
-            {
-                ChatRoom item = MainListView.getSelectionModel().getSelectedItem();
-                int roomID = item.getRoomID();
-
-                if(roomID == getCurrentRoomID()) return;
-
-                setCurrentMessageNumber(0);
-                messageAnchorPane.setVisible(true);
-                setCurrentRoomID(item.getRoomID());
-                System.out.println("item.getRoomID()" + item.getRoomID());
-                bindMessages();
-                System.out.println("After bindMessage");
-            }
-        });
-
+        initializeLoaders();
     }
 
 
-    private void bindMessages()
+
+
+    public void bindMessages()
     {
         FXMLLoader messagePaneLoader = new FXMLLoader(getClass().getResource("MessagePane.fxml"));
         Pane p = null;
@@ -403,7 +332,7 @@ public class ChatController implements Initializable {
         setCurrentMessageNumber(getCurrentMessageNumber() + 10);
 
         try {
-            connect.setURL("http://localhost:8080/load-message");
+            connect.setURL("http://gossip-ict.tk:8080/load-message");
             return connect.connect();
         } catch (IOException e) {
             e.printStackTrace();
@@ -412,23 +341,31 @@ public class ChatController implements Initializable {
         return null;
     }
 
+    public String callSeenAPI(int roomID) throws  IOException{
+        Connect connect = new Connect();
+        connect.addArgument("token", getToken());
+        connect.addArgument("roomID",Integer.toString(roomID));
+        connect.setURL("http://gossip-ict.tk:8080/seen-message");
+        return connect.connect();
+    }
+
     private String callAPI () throws IOException {
         newConnect.addArgument("token", getToken());
-        newConnect.setURL("http://localhost:8080/get-my-profile");
+        newConnect.setURL("http://gossip-ict.tk:8080/get-my-profile");
         return newConnect.connect();
     }
 
     private String callFriendListAPI() throws IOException {
         Connect connect = new Connect();
         connect.addArgument("token", getToken());
-        connect.setURL("http://localhost:8080/get-friend-list");
+        connect.setURL("http://gossip-ict.tk:8080/get-friend-list");
         return connect.connect();
     }
 
     private String callChatListAPI() throws IOException {
         Connect connect = new Connect();
         connect.addArgument("token", getToken());
-        connect.setURL("http://localhost:8080/get-chat-room-list");
+        connect.setURL("http://gossip-ict.tk:8080/get-chat-room-list");
         return connect.connect();
     }
 
@@ -476,68 +413,12 @@ public class ChatController implements Initializable {
     }
 
 
-
-
-
-
-
-
-
-    private ObservableList<Message> testmessages()
-    {
-        list = FXCollections.observableArrayList();
-
-        list.add(new Message(1, 10, "1", "2018-06-10 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "2", "2018-06-11 09:42:23.0"));
-        list.add(new Message(1, 10, "3", "2018-06-12 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "4", "2018-06-11 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "5", "2018-06-11 09:42:23.0"));
-        list.add(new Message(1, 10, "6", "2018-06-12 09:42:23.0"));
-        list.add(new Message(1, 10, "7", "2018-06-12 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "8", "2018-06-11 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "9", "2018-06-11 09:42:23.0"));
-
-        list.add(new Message(1, 10, "10", "2018-06-12 09:42:23.0"));
-
-        list.add(new Message(1, getCurrentUserID(), "11", "2018-06-11 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "12", "2018-06-11 09:42:23.0"));
-        list.add(new Message(1, 10, "13", "2018-06-12 09:42:23.0"));
-        list.add(new Message(1, 10, "14", "2018-06-12 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "15", "2018-06-11 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "16", "2018-06-12 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "17", "2018-06-13 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "18", "2018-06-14 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "19", "2018-06-16 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "20", "2018-06-17 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "21", "2018-06-19 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "22", "2018-06-10 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "23", "2018-06-21 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "24", "2018-06-21 09:42:23.0"));
-        list.add(new Message(1, getCurrentUserID(), "25", "2018-06-13 09:42:23.0"));
-        currentMessageOrder = 25;
-
-        return list;
-    }
-
-
-    private void handleNewButton()
-    {
-        newButton.setOnAction(e -> {
-            currentMessageOrder += 1;
-            messagePaneController.addNewMessage(new Message(1, getCurrentUserID(), Integer.toString(currentMessageOrder), "2018-06-13 09:42:23.0"));
-        });
-    }
-
     public void pushNewMessage(Message m)
     {
         if(m.getRoomID() == currentRoomID)
         {
             messagePaneController.addNewMessage(m);
             setCurrentMessageNumber(getCurrentMessageNumber() + 1);
-        }
-        else
-        {
-
         }
     }
 
@@ -547,5 +428,62 @@ public class ChatController implements Initializable {
             System.out.println("Clicked hyper link");
             bindMessages();
         });
+    }
+
+    private void handleSearchFriendButton(){
+        SearchFriendButton.setOnAction(e -> {
+            System.out.println("Search Friends Clicl");
+            System.out.println("Current menu " + currentMenu) ;
+            if(currentMenu == 2) return;
+            currentMenu = 2;
+
+            ListVBox.getChildren().removeAll(ListVBox.getChildren());
+            ListVBox.getChildren().add(searchFriendsPane);
+        });
+    }
+
+    private void handleChatListButton()
+    {
+        ChatListButton.setOnAction(e -> {
+            System.out.println("ChatList Clicl");
+            System.out.println("Current menu " + currentMenu) ;
+            if(currentMenu == 1) return;
+            currentMenu = 1;
+
+            ListVBox.getChildren().removeAll(ListVBox.getChildren());
+
+            ListVBox.getChildren().add(chatRoomPane);
+        } );
+
+    }
+
+    private void initializeLoaders()
+    {
+        currentMenu = 1;
+
+        chatRoomLoader = new FXMLLoader(getClass().getResource("ChatRoom.fxml"));
+
+        try {
+            chatRoomPane = chatRoomLoader.load();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+
+        ChatRoomController chatRoomController = chatRoomLoader.getController();
+        chatRoomController.setChatController(this);
+        chatRoomController.initialize();
+        chatRoomController.bindChatRoomListView(listChatRoom);
+
+
+        ListVBox.getChildren().add(chatRoomPane);
+
+
+        searchFriendsLoader = new FXMLLoader(getClass().getResource("SearchFriends.fxml"));
+
+        try {
+            searchFriendsPane = searchFriendsLoader.load();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }
 }

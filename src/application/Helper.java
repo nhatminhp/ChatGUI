@@ -80,6 +80,12 @@ public class Helper {
         return string;
     }
 
+    public String normalize(String string) {
+        string = string.replace("\"","");
+        string = string.replace("\"","");
+        return string;
+    }
+
     public static Message getSocketMessage() {
         return socketMessage;
     }

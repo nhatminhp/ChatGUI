@@ -172,7 +172,7 @@ public class RegisterController implements Initializable {
         connect.addArgument("email", NewAccEmail.getText());
         connect.addArgument("password", NewAccPassword.getText());
         connect.addArgument("confirm_password", NewAccConfirmPassword.getText());
-        connect.setURL("http://localhost:8080/signup");
+        connect.setURL("http://gossip-ict.tk:8080/signup");
         return connect.connect();
     }
 

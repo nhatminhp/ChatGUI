@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="837.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="chatbox.SearchFriendsController">
+   <children>
+      <TextField fx:id="searchTextField" layoutX="58.0" layoutY="16.0" prefHeight="25.0" prefWidth="282.0" />
+      <FontAwesomeIconView glyphName="SEARCH" layoutX="25.0" layoutY="32.0" />
+      <ListView fx:id="friendListView" layoutX="13.0" layoutY="58.0" prefHeight="762.0" prefWidth="328.0" />
+   </children>
+</Pane>

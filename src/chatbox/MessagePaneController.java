@@ -1,5 +1,6 @@
 package chatbox;
 
+import application.Helper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,78 +30,25 @@ public class MessagePaneController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        listMessages = FXCollections.observableArrayList();
 
     }
 
     public void setListMessages(ObservableList<Message> _listMessages)
     {
-//        listView = new ListView<Message>();
-        listMessages =  _listMessages;
+
+        listMessages =  normalize(_listMessages);
         FXCollections.reverse(listMessages);
         listView.setItems(listMessages);
         listView.setCellFactory(messageListView -> new MessageCell());
 
-//        listView.setCellFactory(new Callback<ListView<Message>, ListCell<Message>>() {
-//            @Override
-//            public ListCell<Message> call(ListView<Message> studentListView) {
-//                System.out.println("haha1");
-//                ListCell<Message> cell = new ListCell<Message>() {
-//
-//                    FXMLLoader fxmlLoader;
-//                    HBox hbox;
-//
-//                    @Override
-//                    protected void updateItem(Message message, boolean empty) {
-//                        super.updateItem(message, empty);
-//
-//                        if (empty || message == null) {
-//
-//                            setText(null);
-//                            setGraphic(null);
-//
-//                        } else {
-//                            if (fxmlLoader == null) {
-//                                if (message.getFromID() == ChatController.getCurrentUserID()) {
-//                                    fxmlLoader = new FXMLLoader(getClass().getResource("MessageCellRight.fxml"));
-//                                    MessageCellRightController c = fxmlLoader.getController();
-//                                    c.setMessageCell(message);
-//                                } else {
-//                                    fxmlLoader = new FXMLLoader(getClass().getResource("MessageCellLeft.fxml"));
-//                                    MessageCellLeftController c = fxmlLoader.getController();
-//                                    c.setMessageCell(message);
-//                                }
-//
-//                                try {
-//                                    hbox = fxmlLoader.load();
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//
-////            imageView = (ImageView) hbox.lookup("#imageView");
-////            messageLabel = (Label) hbox.lookup("#messageLabel");
-//
-////                            Image i = new Image(getClass().getResourceAsStream("../images/profile.png"));
-////                            imageView.setImage(i);
-////                            messageLabel.setText(message.getMsg());
-//
-//                            setText(null);
-//                            setGraphic(hbox);
-//
-//                            System.out.println("hahahahaah");
-//                        }
-//
-//                    }
-//                };
-//                return cell;
-//            }
-//        });
+    }
 
-
-//        listView.set
-
-        System.out.println("hihihihihi");
+    public ObservableList<Message> normalize(ObservableList<Message> listMessages) {
+        Helper helper = new Helper();
+        for (Message message: listMessages) {
+            message.setMsg(helper.normalize(message.getMsg()));
+        }
+        return  listMessages;
     }
 
     public ChatController getChatController() {

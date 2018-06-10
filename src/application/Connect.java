@@ -12,7 +12,7 @@ public class Connect {
     private Map<String,String> arguments;
 
     public Connect() throws MalformedURLException {
-        this.url = new URL("http://localhost:8080/LoginServlet");
+        this.url = new URL("http://gossip-ict.tk:8080/LoginServlet");
         this.arguments = new HashMap<>();
     }
 
