@@ -1,9 +1,13 @@
 package application;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import message.Message;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft;
 import org.java_websocket.drafts.Draft_6455;
@@ -40,8 +44,27 @@ public class WebsocketConnection extends WebSocketClient {
     */
     @Override
     public void onMessage( String message ) {
-        System.out.println(message);
-        Helper.setSocketMessage(message);
+        System.out.println("onMessage " + message);
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = null;
+        if (!message.contains("session"))
+        {
+            try {
+                jsonNode = mapper.readTree(message);
+
+                Message message1 = new Message();
+                message1.setRoomID(jsonNode.get("roomID").asInt());
+                message1.setFromID(jsonNode.get("from_userID").asInt());
+                message1.setMsg(jsonNode.get("message").toString());
+                message1.setSendingTime(jsonNode.get("sending_time").toString());
+                Helper.setSocketMessage(message1);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
     @Override

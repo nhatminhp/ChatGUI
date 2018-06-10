@@ -189,13 +189,16 @@ public class LoginController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../chatbox/chatbox.fxml"));
             Parent root = loader.load();
             ChatController controller = loader.getController();
+
+            Helper.setChatController(controller);
+
             controller.setToken(this.getToken());
             controller.initialize();
 
             Scene scene = new Scene(root);
 
             Stage newStage = new Stage();
-            newStage.setFullScreen(true);
+            newStage.setFullScreen(false);
             newStage.setTitle("Chat Application");
             newStage.setScene(scene);
             newStage.show();

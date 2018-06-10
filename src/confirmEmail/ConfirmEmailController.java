@@ -100,7 +100,7 @@ public class ConfirmEmailController implements Initializable {
 
     private String callAPI() throws IOException {
         newConnect.addArgument("email", this.getEmail());
-        newConnect.setURL("http://localhost:8080/send-confirm-email");
+        newConnect.setURL("http://gossip-ict.tk:8080/send-confirm-email");
         return newConnect.connect();
     }
 

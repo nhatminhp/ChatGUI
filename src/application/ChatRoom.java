@@ -17,7 +17,7 @@ public class ChatRoom {
     private ArrayList<User> UserList = new ArrayList<User>();
 
     public ChatRoom(int roomID) {
-        this.setRoomID(roomID);
+        this.setRoomID(+roomID);
     }
 
     public void addUserObject(User user) {

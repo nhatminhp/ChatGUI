@@ -4,20 +4,38 @@ import java.io.Serializable;
 
 public class Message implements Serializable {
 
-    private String username;
+    private int roomID;
+    private int fromID;
     private String msg;
+    private String sendingTime;
 
-    public Message(String username, String msg) {
-        setUsername(username);
-        setMsg(msg);
+    public Message() {
+        msg = "";
+        sendingTime = "";
     }
 
-    public String getUsername() {
-        return username;
+    public Message(int _roomID, int _fromID, String _msg, String _sendingTime) {
+        setRoomID(_roomID);
+        setFromID(_fromID);
+        setMsg(_msg);
+        setSendingTime(_sendingTime);
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+
+    public int getRoomID() {
+        return roomID;
+    }
+
+    public void setRoomID(int roomID) {
+        this.roomID = roomID;
+    }
+
+    public int getFromID() {
+        return fromID;
+    }
+
+    public void setFromID(int fromID) {
+        this.fromID = fromID;
     }
 
     public String getMsg() {
@@ -28,4 +46,17 @@ public class Message implements Serializable {
         this.msg = msg;
     }
 
+    public String getSendingTime() {
+        return sendingTime;
+    }
+
+    public void setSendingTime(String sendingTime) {
+        this.sendingTime = sendingTime;
+    }
+
+    public String toString()
+    {
+        String t = Integer.toString(getRoomID()) + "; " + Integer.toString(getFromID()) + "; " + getMsg() + "; " + getSendingTime();
+        return t;
+    }
 }

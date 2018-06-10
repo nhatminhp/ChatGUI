@@ -1,5 +1,7 @@
 package application;
 
+import chatbox.ChatController;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -8,13 +10,19 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import message.Message;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Helper {
 
-    private static String socketMessage;
+    private static Message socketMessage;
+
+    private static ChatController chatController;
+
+
+
 
     public String removeDoubleCode(String string) {
         if (string.equals("null")) return "";
@@ -72,12 +80,33 @@ public class Helper {
         return string;
     }
 
-    public static String getSocketMessage() {
+    public static Message getSocketMessage() {
         return socketMessage;
     }
 
-    public static void setSocketMessage(String socketMessage) {
+    public static void setSocketMessage(Message socketMessage) {
         Helper.socketMessage = socketMessage;
+        chatController.pushNewMessage(socketMessage);
+    }
+
+    public static Message parseMessage(JsonNode node, int roomID)
+    {
+        Message m = new Message();
+
+        m.setFromID(node.get("from_userID").asInt());
+        m.setMsg(node.get("message").toString());
+        m.setRoomID(roomID);
+        m.setSendingTime(node.get("sending_time").toString());
+        System.out.println("Message " + m.toString());
+        return m;
+    }
+
+    public static ChatController getChatController() {
+        return chatController;
+    }
+
+    public static void setChatController(ChatController chatController) {
+        Helper.chatController = chatController;
     }
 
 }

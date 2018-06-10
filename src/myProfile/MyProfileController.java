@@ -97,6 +97,9 @@ public class MyProfileController implements Initializable {
             Parent root = loader.load();
 
             ChatController controller = loader.getController();
+
+            Helper.setChatController(controller);
+
             controller.setToken(getToken());
             controller.initialize();
 
