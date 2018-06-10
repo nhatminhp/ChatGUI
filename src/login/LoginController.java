@@ -17,6 +17,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import confirmCode.ConfirmCodeController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -113,8 +114,7 @@ public class LoginController implements Initializable {
                 onInvalidLogin();
                 return;
             }if (parse.get("success").equals("true") && parse.get("confirm").equals("false")) {
-                onNotConfirmed();
-                return;
+                loadConfirmCode();
             }
             setToken(parse.get("token"));
             if (RememberMeCheckbox.isSelected()) {
@@ -173,13 +173,35 @@ public class LoginController implements Initializable {
 
             Stage newStage = new Stage();
             newStage.setFullScreen(true);
-            newStage.setTitle("Chat Application");
+            newStage.setTitle("Chat Application.");
             newStage.setScene(scene);
             newStage.show();
 
             this.getStage().close();
         } catch (Exception e) {
             System.out.println("Cannot switch to Register scene.");
+        }
+    }
+
+    private void loadConfirmCode() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../confirmCode/confirmCode.fxml"));
+            Parent root = loader.load();
+            ConfirmCodeController controller = loader.getController();
+            controller.setEmail(LoginUsernameTextField.getText());
+
+            Scene scene = new Scene(root);
+
+            Stage newStage = new Stage();
+            newStage.setFullScreen(true);
+            newStage.setTitle("Chat Application");
+            newStage.setScene(scene);
+            newStage.show();
+
+            this.getStage().close();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -214,9 +236,6 @@ public class LoginController implements Initializable {
         NoticeLabel.setText("Incorrect Username or Password !");
     }
 
-    private void onNotConfirmed() {
-        NoticeLabel.setText("You haven't confirmed email, click forgot password to confirm your email");
-    }
 
     private boolean allFieldsFilled() {
         if (LoginPasswordField.getText() == null || LoginPasswordField.getText().trim().isEmpty()

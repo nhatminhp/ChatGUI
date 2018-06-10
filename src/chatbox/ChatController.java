@@ -169,6 +169,7 @@ public class ChatController implements Initializable {
         profileJson  = mapper2.readTree(returnedJson2);
         MyNameLabel.setText(helper.removeDoubleCode(profileJson.get("user_name").toString()));
         setCurrentUserID(profileJson.get("userID").asInt());
+        helper.setIconButton(MyProfileImage, "../images/profile.png", 100, 100);
 //        helper.setIconButton(MyProfileImage,"gossip-ict.tk:8080"+profileJson.get("profile_picture"),100,100);
 
         String returnedJson3 = callChatListAPI();

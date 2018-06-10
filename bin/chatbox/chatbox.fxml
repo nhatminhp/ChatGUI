@@ -28,7 +28,7 @@
       <MaterialDesignIconView fill="#1b8ff5" glyphName="ACCOUNT" layoutX="11.0" layoutY="269.0" size="25.0" text="" wrappingWidth="25.000023692846298" />
       <AnchorPane fx:id="messageAnchorPane" layoutX="353.0" prefHeight="1123.0" prefWidth="1567.0" style="-fx-background-color: #e2f2ff; -fx-border-color: #8e949e;" visible="false">
          <children>
-            <JFXButton fx:id="CloseButton" layoutX="1510.0" layoutY="19.0" onAction="#Exit" prefHeight="48.0" prefWidth="49.0" text="Exit" />
+            <JFXButton fx:id="CloseButton" layoutX="1490.0" layoutY="19.0" onAction="#Exit" prefHeight="48.0" prefWidth="49.0" text="Exit" />
             <Hyperlink fx:id="loadOldMessagesLink" layoutX="110.0" layoutY="81.0" text="Load old messages...">
                <font>
                   <Font size="14.0" />

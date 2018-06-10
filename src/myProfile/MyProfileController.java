@@ -5,6 +5,7 @@ import application.Helper;
 import chatbox.ChatController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.jfoenix.controls.JFXButton;
+import confirmEmail.ConfirmEmailController;
 import editProfile.EditProfileController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +34,8 @@ public class MyProfileController implements Initializable {
     private JFXButton BackButton;
     @FXML
     private JFXButton ExitButton;
+    @FXML
+    private JFXButton SignOutButton;
     @FXML
     private JFXButton ChangePasswordButton;
     @FXML
@@ -66,6 +69,7 @@ public class MyProfileController implements Initializable {
         Helper helper = new Helper();
         helper.setIconButton(BackButton,"../images/back.png");
         helper.setIconButton(ExitButton,"../images/exit.png");
+        helper.setIconButton(SignOutButton,"../images/signout.png");
     }
 
     public void initialize(JsonNode json) {
@@ -86,6 +90,12 @@ public class MyProfileController implements Initializable {
     @FXML
     private void Exit(ActionEvent event) {
         this.getStage().close();
+    }
+
+    @FXML
+    private void signOut(ActionEvent event) {
+        System.out.println("signout button clicked");
+        (new ConfirmEmailController()).clickBackButton(new ActionEvent());
     }
 
 

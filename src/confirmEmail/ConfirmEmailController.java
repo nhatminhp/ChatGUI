@@ -6,6 +6,7 @@ import application.Json;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import confirm.ConfirmController;
+import confirmCode.ConfirmCodeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -117,7 +118,7 @@ public class ConfirmEmailController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../confirm/confirm.fxml"));
             Parent root = loader.load();
-            ConfirmController controller = loader.getController();
+            ConfirmCodeController controller = loader.getController();
             controller.setEmail(this.getEmail());
             Scene scene = new Scene(root);
 
@@ -134,7 +135,7 @@ public class ConfirmEmailController implements Initializable {
     }
 
     @FXML
-    private void clickBackButton(ActionEvent event) {
+    public void clickBackButton(ActionEvent event) {
         System.out.println("Back Button pressed");
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));

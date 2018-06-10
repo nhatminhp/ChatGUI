@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import confirm.ConfirmController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -125,7 +126,10 @@ public class RegisterController implements Initializable {
             String returnedJson = callConnectAPI();
             ObjectMapper mapper = new ObjectMapper();
             registerJson = mapper.readTree(returnedJson);
-            if (registerJson.get("success").asBoolean()) {
+            String returnedJson1 = callEmailAPI();
+            ObjectMapper mapper1 = new ObjectMapper();
+            JsonNode jsonNode = mapper1.readTree(returnedJson1);
+            if (registerJson.get("success").asBoolean() && jsonNode.get("success").asBoolean()) {
                 loadConfirm();
                 return;
             }
@@ -152,12 +156,15 @@ public class RegisterController implements Initializable {
     private void loadConfirm() {
         System.out.println("Next Button pressed");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../confirm/confirm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../login/login.fxml"));
+            Parent root = loader.load();
+
             Scene scene = new Scene(root);
+
 
             Stage newStage = new Stage();
             newStage.setFullScreen(true);
-            newStage.setTitle("Chat Application");
+            newStage.setTitle("Chat Application..");
             newStage.setScene(scene);
             newStage.show();
 
@@ -165,6 +172,13 @@ public class RegisterController implements Initializable {
         } catch (Exception e) {
             System.out.println("Cannot switch to Confirm Code scene.");
         }
+    }
+
+    private String callEmailAPI() throws IOException {
+        Connect connect = new Connect();
+        connect.addArgument("email", NewAccEmail.getText());
+        connect.setURL("http://gossip-ict.tk:8080/send-confirm-email");
+        return connect.connect();
     }
 
     private String callConnectAPI () throws IOException {
