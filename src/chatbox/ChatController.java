@@ -279,6 +279,7 @@ public class ChatController implements Initializable {
             MyProfileController controller = loader.getController();
             controller.setToken(getToken());
             controller.setReturnedJson(returnedJson);
+            System.out.println("before initialization");
             controller.initialize(returnedJson);
 
             Scene scene = new Scene(root);
@@ -291,7 +292,7 @@ public class ChatController implements Initializable {
 
             this.getStage().close();
         } catch (Exception e) {
-            System.out.println("Cannot switch to scene.");
+            e.printStackTrace();
         }
     }
 
@@ -386,7 +387,11 @@ public class ChatController implements Initializable {
     @FXML
     private void triggerEnter(javafx.scene.input.KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER)  {
-            clickToMyProfileButton(new ActionEvent());
+            try {
+                sendMessage(new ActionEvent());
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
         }
     }
 

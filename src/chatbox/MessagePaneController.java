@@ -61,6 +61,7 @@ public class MessagePaneController implements Initializable{
 
     public void addNewMessage(Message m)
     {
+        (new Helper()).normalize(m.getMsg());
         listMessages.add(m);
         listView.scrollTo(listMessages.size() - 1);
     }

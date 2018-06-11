@@ -69,14 +69,12 @@ public class MyProfileController implements Initializable {
         Helper helper = new Helper();
         helper.setIconButton(BackButton,"../images/back.png");
         helper.setIconButton(ExitButton,"../images/exit.png");
-        helper.setIconButton(SignOutButton,"../images/signout.png");
+        helper.setIconButton(SignOutButton,"../images/signout.jpg");
     }
 
     public void initialize(JsonNode json) {
         Helper helper = new Helper();
-        File file = new File("../profile.png");
-        Image image = new Image(file.toURI().toString());
-        MyImageView.setImage(image);
+        helper.setIconButton(MyImageView,"../images/profile.png",300,300);
         String user_name = helper.removeDoubleCode(json.get("user_name").toString());
         String email = helper.removeDoubleCode(json.get("email").toString());
         String phone_number = helper.removeDoubleCode(json.get("phone_number").toString());
